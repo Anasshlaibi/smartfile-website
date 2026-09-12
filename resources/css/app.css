@@ -1,3 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    /* Color Tokens */
+    --brand-obsidian: #080914;
+    --brand-navy: #101229;
+    --brand-surface: #171936;
+    --brand-warm-white: #F7F6F3;
+    --brand-coral: #FF4D42;
+    --brand-coral-hover: #E94239;
+    --brand-lavender: #B8BDE0;
+    --brand-muted: #8D91A8;
+
+    /* Cinematic Motion Tokens */
+    --duration-micro: 200ms;
+    --duration-ui: 350ms;
+    --duration-reveal: 850ms;
+    --duration-hero: 1200ms;
+
+    --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        font-family: 'Outfit', sans-serif;
+        background-color: var(--brand-obsidian);
+        color: var(--brand-navy);
+    }
+    body {
+        overflow-x: hidden;
+        selection-background-color: var(--brand-coral);
+        selection-color: #ffffff;
+    }
+}
+
+.font-serif-italic {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+}
+
+/* ========================================================
+   CINEMATIC TEXT & SCROLL REVEAL ANIMATION SYSTEM
+   ======================================================== */
+.reveal-mask {
+    overflow: hidden;
+    display: block;
+}
+
+.reveal-line {
+    transform: translate3d(0, 115%, 0);
+    opacity: 0;
+    transition: transform var(--duration-reveal) var(--ease-premium), opacity var(--duration-reveal) var(--ease-premium);
+    will-change: transform, opacity;
+}
+
+.reveal-line.revealed {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+}
+
+.reveal-fade-up {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+    transition: opacity var(--duration-reveal) var(--ease-premium), transform var(--duration-reveal) var(--ease-premium);
+    will-change: opacity, transform;
+}
+
+.reveal-fade-up.revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translate3d(-48px, 0, 0);
+    transition: opacity var(--duration-reveal) var(--ease-premium), transform var(--duration-reveal) var(--ease-premium);
+    will-change: opacity, transform;
+}
+
+.reveal-left.revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translate3d(48px, 0, 0);
+    transition: opacity var(--duration-reveal) var(--ease-premium), transform var(--duration-reveal) var(--ease-premium);
+    will-change: opacity, transform;
+}
+
+.reveal-right.revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.reveal-scale-up {
+    opacity: 0;
+    transform: scale(0.92) translate3d(0, 24px, 0);
+    transition: opacity var(--duration-reveal) var(--ease-premium), transform var(--duration-reveal) var(--ease-premium);
+    will-change: opacity, transform;
+}
+
+.reveal-scale-up.revealed {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+}
+
+/* Stagger Delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+
+/* ========================================================
+   HERO SEQUENTIAL ANIMATION
+   ======================================================== */
+.hero-badge-init {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+    transition: opacity 600ms var(--ease-premium), transform 600ms var(--ease-premium);
+}
+.hero-badge-init.revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.hero-btn-init {
+    opacity: 0;
+    transform: scale(0.96) translate3d(0, 12px, 0);
+    transition: opacity 700ms var(--ease-premium), transform 700ms var(--ease-premium);
+}
+.hero-btn-init.revealed {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+}
+
+/* ========================================================
+   SEAMLESS CLIENT LOGO MARQUEE
+   ======================================================== */
+@keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 35s linear infinite;
+    will-change: transform;
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
+/* ========================================================
+   CINEMA CARD MICRO-INTERACTIONS
+   ======================================================== */
+.cinema-card {
+    transition: transform var(--duration-ui) var(--ease-premium), border-color var(--duration-ui) var(--ease-premium), box-shadow var(--duration-ui) var(--ease-premium);
+}
+
+.cinema-card:hover {
+    transform: translate3d(0, -5px, 0);
+}
+
+.cinema-card-img {
+    transition: transform 900ms var(--ease-soft);
+    will-change: transform;
+}
+
+.cinema-card:hover .cinema-card-img {
+    transform: scale(1.04);
+}
+
+.cinema-meta-shift {
+    transition: transform var(--duration-ui) var(--ease-premium), color var(--duration-ui) var(--ease-premium);
+}
+
+.cinema-card:hover .cinema-meta-shift {
+    transform: translate3d(5px, 0, 0);
+}
+
+/* ========================================================
+   GLASS UTILITIES
+   ======================================================== */
+.glass-dark {
+    background: rgba(16, 18, 41, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-pill {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ========================================================
+   HEADER SCROLL DYNAMICS
+   ======================================================== */
+#mainHeader {
+    transition: background-color 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium), border-color 0.4s var(--ease-premium), backdrop-filter 0.4s var(--ease-premium);
+}
+
+#mainHeader.scrolled {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(16, 18, 41, 0.08);
+    box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.08);
+}
+
+#mainHeader.scrolled .nav-link {
+    color: #101229 !important;
+}
+
+#mainHeader.scrolled .nav-link:hover {
+    color: #FF4D42 !important;
+}
+
+#mainHeader.scrolled #mobileMenuBtn {
+    color: #101229 !important;
+}
+
+#mainHeader.scrolled #topInfoStrip {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+    overflow: hidden;
+    border-bottom: none;
+}
+
+/* ========================================================
+   ESTIMATOR STEP SLIDER ANIMATION
+   ======================================================== */
+.estimator-step {
+    transition: opacity 320ms var(--ease-premium), transform 320ms var(--ease-premium);
+    will-change: opacity, transform;
+}
+
+.estimator-step.step-out {
+    opacity: 0;
+    transform: translate3d(-20px, 0, 0);
+    pointer-events: none;
+}
+
+.estimator-step.step-in {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+/* ========================================================
+   ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   ======================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal-line, .reveal-fade-up, .reveal-left, .reveal-right, .reveal-scale-up, .hero-badge-init, .hero-btn-init {
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+    .animate-marquee {
+        animation: none !important;
+        transform: none !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+}

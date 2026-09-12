@@ -11,8 +11,19 @@ export default {
     ],
     theme: {
         extend: {
+            colors: {
+                obsidian: '#080914',
+                'cinematic-navy': '#101229',
+                'surface-dark': '#171936',
+                'warm-white': '#F7F6F3',
+                coral: '#FF4D42',
+                'coral-hover': '#E94239',
+                'lavender-text': '#B8BDE0',
+                'muted-text': '#8D91A8',
+            },
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Outfit', ...defaultTheme.fontFamily.sans],
+                serif: ['Cormorant Garamond', ...defaultTheme.fontFamily.serif],
             },
         },
     },

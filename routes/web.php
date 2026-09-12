@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\MenuController;
@@ -9,14 +10,17 @@ use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\SitemapController;
-use App\Models\Page; 
+use App\Models\Page;
 
-// 1. Page d'Accueil dynamique
-Route::get('/', function () {
-    $page = Page::where('slug', 'accueil')->where('is_active', true)->first();
-    if (!$page) { abort(404, 'La page d\'accueil est indisponible.'); }
-    return view('front.page', compact('page'));
-})->name('home');
+// 1. Front Pages & Film Case Studies
+Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/realisations', [FrontController::class, 'portfolio'])->name('portfolio');
+Route::get('/realisations/{slug}', [FrontController::class, 'projectShow'])->name('project.show');
+Route::get('/expertises', [FrontController::class, 'expertises'])->name('expertises');
+Route::get('/expertises/{slug}', [FrontController::class, 'expertiseDetail'])->name('expertises.show');
+Route::get('/a-propos', [FrontController::class, 'about'])->name('about');
+Route::get('/equipe', [FrontController::class, 'team'])->name('team');
+Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 
 // 2. Soumission Devis & Contact (CRM Leads)
 Route::post('/inquiry/submit', [InquiryController::class, 'submit'])->name('inquiry.submit');
@@ -64,9 +68,15 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::post('settings', [SettingController::class, 'update'])->name('admin.settings.update');
 });
 
-// 6. Routes dynamiques pour les autres pages
+// 6. Routes dynamiques pour les autres pages CMS
 Route::get('/{slug}', function ($slug) {
     $page = Page::where('slug', $slug)->where('is_active', true)->firstOrFail();
-    return view('front.page', compact('page'));
+    $menus = \App\Models\Menu::whereNull('parent_id')->orderBy('order')->with('children.children')->get();
+    $settings = [
+        'phone' => \App\Models\Setting::get('phone', '+212 6 17 20 23 45'),
+        'email' => \App\Models\Setting::get('email', 'contact@smartfilmsprod.com'),
+        'address' => \App\Models\Setting::get('address', '130 Bv d\'Anfa, 20300 Casablanca, Maroc'),
+        'whatsapp' => \App\Models\Setting::get('whatsapp', '212617202345'),
+    ];
+    return view('front.page', compact('page', 'menus', 'settings'));
 })->name('page.show');
-
