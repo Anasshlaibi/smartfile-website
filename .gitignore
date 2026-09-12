@@ -32,3 +32,5 @@ public/uploads/hero_video.mp4
 smartfilms_codebase.zip
 public/smartfilms_codebase.zip
 *.sql
+
+.vercel

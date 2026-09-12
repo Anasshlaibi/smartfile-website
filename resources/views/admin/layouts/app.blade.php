@@ -24,18 +24,36 @@
             <a href="{{ route('admin.dashboard') }}" class="flex items-center px-6 py-3 {{ request()->routeIs('admin.dashboard') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:bg-gray-800 hover:text-white transition-colors' }}">
                 <i class="fas fa-tachometer-alt w-6"></i> Tableau de bord
             </a>
+
+            <a href="{{ route('admin.leads.index') }}" class="flex items-center px-6 py-3 {{ request()->routeIs('admin.leads.*') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:bg-gray-800 hover:text-white transition-colors' }}">
+                <i class="fas fa-bullhorn w-6 text-amber-400"></i> Leads & Devis CRM
+                @php $newCount = \App\Models\Lead::where('status', 'new')->count(); @endphp
+                @if($newCount > 0)
+                    <span class="ml-auto bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{{ $newCount }}</span>
+                @endif
+            </a>
+
+            <a href="{{ route('admin.projects.index') }}" class="flex items-center px-6 py-3 {{ request()->routeIs('admin.projects.*') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:bg-gray-800 hover:text-white transition-colors' }}">
+                <i class="fas fa-video w-6 text-indigo-400"></i> Portfolio & Films
+            </a>
             
+            <a href="{{ route('pages.index') }}" class="flex items-center px-6 py-3 {{ request()->routeIs('pages.*') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:bg-gray-800 hover:text-white transition-colors' }}">
+                <i class="fas fa-file-alt w-6"></i> Pages & Builder
+            </a>
+
             <a href="{{ route('menus.index') }}" class="flex items-center px-6 py-3 {{ request()->routeIs('menus.*') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:bg-gray-800 hover:text-white transition-colors' }}">
                 <i class="fas fa-list w-6"></i> Menu Builder
             </a>
 
-            <a href="{{ route('pages.index') }}" class="flex items-center px-6 py-3 {{ request()->routeIs('pages.*') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:bg-gray-800 hover:text-white transition-colors' }}">
-                <i class="fas fa-file-alt w-6"></i> Pages
+            <a href="{{ route('admin.settings.index') }}" class="flex items-center px-6 py-3 {{ request()->routeIs('admin.settings.*') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:bg-gray-800 hover:text-white transition-colors' }}">
+                <i class="fas fa-cog w-6"></i> Paramètres & SEO
             </a>
-            <a href="#" class="flex items-center px-6 py-3 text-gray-400 hover:bg-gray-800 hover:text-white transition-colors"><i class="fas fa-images w-6"></i> Portfolio</a>
-            <a href="#" class="flex items-center px-6 py-3 text-gray-400 hover:bg-gray-800 hover:text-white transition-colors"><i class="fas fa-newspaper w-6"></i> Blog</a>
-            <a href="#" class="flex items-center px-6 py-3 text-gray-400 hover:bg-gray-800 hover:text-white transition-colors"><i class="fas fa-chart-line w-6"></i> Statistiques</a>
-            <a href="#" class="flex items-center px-6 py-3 text-gray-400 hover:bg-gray-800 hover:text-white transition-colors"><i class="fas fa-cog w-6"></i> Paramètres</a>
+
+            <div class="pt-6 px-6">
+                <a href="/" target="_blank" class="block w-full py-2.5 text-center bg-gray-800 hover:bg-gray-700 text-white rounded-xl text-xs font-bold transition-all">
+                    <i class="fas fa-external-link-alt mr-1.5"></i> Voir le site live
+                </a>
+            </div>
         </nav>
     </aside>
 
