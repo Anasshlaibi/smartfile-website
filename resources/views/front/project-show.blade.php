@@ -1,18 +1,45 @@
 @extends('layouts.front')
 
-@section('title', $project->title . ' — SmartFilms Prod')
-@section('meta_description', $project->description)
-@section('og_title', $project->title . ' &bull; ' . $project->client_name . ' — SmartFilms Prod')
+@section('title', ($project->seo_title ?? $project->title) . ' | SmartFilms Prod Casablanca')
+@section('meta_description', $project->seo_description ?? $project->description ?? 'Production cinématographique réalisée par SmartFilms Prod à Casablanca, Maroc.')
+@section('og_title', $project->title . ' — ' . $project->client_name . ' | SmartFilms Prod')
 @section('og_description', $project->description)
+@section('og_image', asset($project->thumbnail ?? 'uploads/cinema_corporate_film.png'))
+
+@push('head')
+<!-- VideoObject Structured Data for Film Case Study -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "{{ $project->title }}",
+  "description": "{{ $project->description ?? $project->title }}",
+  "thumbnailUrl": [
+    "{{ asset($project->thumbnail ?? 'uploads/cinema_corporate_film.png') }}"
+  ],
+  "uploadDate": "{{ $project->created_at ? $project->created_at->toIso8601String() : '2026-01-01T00:00:00+00:00' }}",
+  "duration": "PT2M30S",
+  "embedUrl": "{{ $project->video_url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "SmartFilms Prod",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ asset('uploads/smartfilms_logo.png') }}"
+    }
+  }
+}
+</script>
+@endpush
 
 @section('content')
 <!-- CINEMATIC CASE STUDY VIEW -->
 <article class="bg-[#080914] text-white">
 
     <!-- 1. Hero Header -->
-    <header class="relative w-full min-h-[75vh] flex items-end overflow-hidden pb-16 pt-36">
+    <header class="relative w-full min-h-[70vh] flex items-end overflow-hidden pb-16 pt-36">
         <div class="absolute inset-0">
-            <img src="{{ $project->thumbnail ?? '/uploads/cinema_corporate_film.png' }}" alt="{{ $project->title }}" class="w-full h-full object-cover opacity-35 scale-105">
+            <img src="{{ $project->thumbnail ?? '/uploads/cinema_corporate_film.png' }}" alt="{{ $project->title }} - SmartFilms Prod Casablanca" class="w-full h-full object-cover opacity-35 scale-105">
             <div class="absolute inset-0 bg-gradient-to-t from-[#080914] via-[#080914]/70 to-transparent"></div>
         </div>
 
@@ -32,20 +59,20 @@
             <!-- Project Metadata Bar -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-white/10 text-xs font-mono">
                 <div>
-                    <span class="text-slate-500 uppercase block">CLIENT</span>
+                    <span class="text-slate-500 uppercase block mb-1">CLIENT</span>
                     <span class="font-bold text-white">{{ $project->client_name }}</span>
                 </div>
                 <div>
-                    <span class="text-slate-500 uppercase block">DISCIPLINE</span>
+                    <span class="text-slate-500 uppercase block mb-1">DISCIPLINE</span>
                     <span class="font-bold text-white">{{ $project->category ?? 'Brand Film' }}</span>
                 </div>
                 <div>
-                    <span class="text-slate-500 uppercase block">DURÉE</span>
-                    <span class="font-bold text-white">{{ $project->duration ?? '02:30' }}</span>
+                    <span class="text-slate-500 uppercase block mb-1">LOCALISATION</span>
+                    <span class="font-bold text-white">{{ $project->location ?? 'Casablanca, Maroc' }}</span>
                 </div>
                 <div>
-                    <span class="text-slate-500 uppercase block">RÉALISATION</span>
-                    <span class="font-bold text-white">SmartFilms Studio Casablanca</span>
+                    <span class="text-slate-500 uppercase block mb-1">RÉALISATION & REGIE</span>
+                    <span class="font-bold text-white">SmartFilms Studio</span>
                 </div>
             </div>
         </div>
@@ -59,6 +86,8 @@
                     $embedUrl = $project->video_url;
                     if(str_contains($embedUrl, 'youtube.com/watch?v=')) {
                         $embedUrl = str_replace('watch?v=', 'embed/', $embedUrl);
+                    } elseif(str_contains($embedUrl, 'youtu.be/')) {
+                        $embedUrl = str_replace('youtu.be/', 'www.youtube.com/embed/', $embedUrl);
                     }
                 @endphp
                 <iframe class="w-full h-full border-0" src="{{ $embedUrl }}" allow="autoplay; fullscreen" allowfullscreen></iframe>
@@ -69,41 +98,53 @@
     </section>
 
     <!-- 3. Editorial Overview & Creative Approach -->
-    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-16">
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-16">
         
-        <!-- Synopsis / Challenge -->
+        <!-- Synopsis / Le Défi -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             <div class="md:col-span-4">
-                <span class="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#FF4D42]">LE DÉFI</span>
-                <h3 class="text-2xl font-bold uppercase text-white mt-2">Vision & Objectifs</h3>
+                <span class="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#FF4D42]">LE DÉFI CRÉATIF</span>
+                <h2 class="text-2xl font-bold uppercase text-white mt-2">Vision & Objectifs</h2>
             </div>
             <div class="md:col-span-8 text-base text-[#B8BDE0] font-light leading-relaxed space-y-4">
                 <p>
                     {{ $project->description }}
                 </p>
                 <p class="text-sm text-slate-400">
-                    L'objectif était d'allier un rythme visuel soutenu à une esthétique cinématographique exigeante, captant l'essence des équipes et le leadership industriel de la marque.
+                    Concevoir un film à l'esthétique cinématographique internationale, valorisant la puissance des équipes et le leadership de la marque au Maroc et à l'export.
                 </p>
             </div>
         </div>
 
-        <!-- Dispositif Technique & Deliverables -->
+        <!-- Dispositif & Livrables -->
         <div class="p-8 md:p-10 rounded-3xl bg-[#101229] border border-white/10 space-y-6">
-            <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-[#FF4D42]">DISPOSITIF DE PRODUCTION</h3>
+            <h3 class="text-xs font-mono font-bold uppercase tracking-widest text-[#FF4D42]">DISPOSITIF TECHNIQUE & LIVRABLES</h3>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs font-mono">
                 <div class="space-y-1">
                     <span class="text-slate-400 uppercase block">Caméras & Optiques</span>
-                    <span class="font-bold text-white">RED 8K &bull; Primes Cinéma</span>
+                    <span class="font-bold text-white">Caméras Cinéma &bull; Séries Prime</span>
                 </div>
                 <div class="space-y-1">
-                    <span class="text-slate-400 uppercase block">Captation Aérienne</span>
-                    <span class="font-bold text-white">Drone DJI Inspire &bull; FPV Racer</span>
+                    <span class="text-slate-400 uppercase block">Prises de Vues Aériennes</span>
+                    <span class="font-bold text-white">Drone 4K Stabilisé &bull; FPV</span>
                 </div>
                 <div class="space-y-1">
                     <span class="text-slate-400 uppercase block">Post-Production</span>
-                    <span class="font-bold text-white">DaVinci Studio &bull; Mix 5.1 TV</span>
+                    <span class="font-bold text-white">Étalonnage HDR &bull; Mix Broadcast</span>
                 </div>
             </div>
+        </div>
+
+        <!-- Studio Credits -->
+        <div class="border-t border-white/10 pt-10 flex flex-wrap justify-between items-center gap-6 text-xs font-mono text-slate-400">
+            <div>
+                <span class="text-white font-bold block">Production : SmartFilms Prod Casablanca</span>
+                <span>Boulevard d'Anfa &bull; Maroc</span>
+            </div>
+            <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-[#FF4D42] hover:underline font-bold">
+                <span>Discuter d'un projet similaire</span>
+                <i class="bi bi-arrow-right"></i>
+            </a>
         </div>
 
     </section>

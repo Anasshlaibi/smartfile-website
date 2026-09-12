@@ -22,8 +22,10 @@ Route::get('/a-propos', [FrontController::class, 'about'])->name('about');
 Route::get('/equipe', [FrontController::class, 'team'])->name('team');
 Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 
-// 2. Soumission Devis & Contact (CRM Leads)
-Route::post('/inquiry/submit', [InquiryController::class, 'submit'])->name('inquiry.submit');
+// 2. Soumission Devis & Contact (CRM Leads avec Rate Limiting)
+Route::post('/inquiry/submit', [InquiryController::class, 'submit'])
+    ->middleware('throttle:10,1')
+    ->name('inquiry.submit');
 
 // 3. XML Sitemap pour le référencement SEO
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');

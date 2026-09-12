@@ -7,43 +7,73 @@ document.addEventListener('DOMContentLoaded', () => {
     const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // =========================================================================
-    // 1. HERO SEQUENCED LAYERED REVEAL (1.2s Sequence)
+    // 1. HERO SEQUENCED LAYERED REVEAL (Exact Timings: 0ms -> 200ms -> 350ms -> 450ms -> 650ms -> 800ms -> 950ms -> 1200ms)
     // =========================================================================
     const initHeroAnimation = () => {
-        if (isReducedMotion) {
-            document.querySelectorAll('.hero-badge-init, .reveal-line, .hero-btn-init').forEach(el => {
+        const revealImmediately = () => {
+            document.querySelectorAll('.hero-eyebrow-target, .hero-h1-line1, .hero-h1-line2, .hero-serif-accent, .hero-copy, .hero-cta-target, .hero-scroll-target, .reveal-line, .reveal-fade-up, .reveal-scale-up').forEach(el => {
                 el.classList.add('revealed');
+                el.style.opacity = '1';
+                el.style.transform = 'none';
             });
+        };
+
+        if (isReducedMotion) {
+            revealImmediately();
             return;
         }
 
-        setTimeout(() => {
-            document.querySelectorAll('#hero .hero-badge-init').forEach(el => el.classList.add('revealed'));
-        }, 150);
+        // 0ms: Hero video/poster visible by default
 
+        // 200ms: Eyebrow & Badges appear
         setTimeout(() => {
-            const line1 = document.querySelector('#hero .hero-line-1');
+            document.querySelectorAll('.hero-eyebrow-target').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        }, 200);
+
+        // 350ms: Headline line 1 reveals (L'IMPACT)
+        setTimeout(() => {
+            const line1 = document.querySelector('.hero-h1-line1');
             if (line1) line1.classList.add('revealed');
-        }, 320);
+        }, 350);
 
+        // 450ms: Headline line 2 reveals (CINÉMATOGRAPHIQUE)
         setTimeout(() => {
-            const line2 = document.querySelector('#hero .hero-line-2');
+            const line2 = document.querySelector('.hero-h1-line2');
             if (line2) line2.classList.add('revealed');
-        }, 440);
+        }, 450);
 
+        // 650ms: Serif accent reveals (au service des grandes marques)
         setTimeout(() => {
-            const serifLine = document.querySelector('#hero .hero-serif');
-            if (serifLine) serifLine.classList.add('revealed');
-        }, 580);
+            const serifAccent = document.querySelector('.hero-serif-accent');
+            if (serifAccent) serifAccent.classList.add('revealed');
+        }, 650);
 
+        // 800ms: Supporting copy fades in
         setTimeout(() => {
-            const heroDesc = document.querySelector('#hero .hero-desc');
-            if (heroDesc) heroDesc.classList.add('revealed');
-        }, 720);
+            const heroCopy = document.querySelector('.hero-copy');
+            if (heroCopy) heroCopy.classList.add('revealed');
+        }, 800);
 
+        // 950ms: CTA enters
         setTimeout(() => {
-            document.querySelectorAll('#hero .hero-btn-init').forEach(el => el.classList.add('revealed'));
-        }, 900);
+            const cta = document.querySelector('.hero-cta-target');
+            if (cta) {
+                cta.style.opacity = '1';
+                cta.style.transform = 'translateY(0)';
+            }
+        }, 950);
+
+        // 1200ms: Scroll indicator appears
+        setTimeout(() => {
+            const scrollIndicator = document.querySelector('.hero-scroll-target');
+            if (scrollIndicator) {
+                scrollIndicator.style.opacity = '1';
+                scrollIndicator.style.transform = 'translateY(0)';
+            }
+        }, 1200);
     };
 
     initHeroAnimation();
@@ -53,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     const observerOptions = {
         root: null,
-        rootMargin: '0px 0px -12% 0px',
-        threshold: 0.15
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.12
     };
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -66,9 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.reveal-line, .reveal-fade-up').forEach(el => {
+    document.querySelectorAll('.reveal-line, .reveal-fade-up, .reveal-left, .reveal-right, .reveal-scale-up').forEach(el => {
         if (isReducedMotion) {
             el.classList.add('revealed');
+            el.style.opacity = '1';
+            el.style.transform = 'none';
         } else {
             revealObserver.observe(el);
         }

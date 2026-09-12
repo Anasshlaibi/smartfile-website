@@ -284,20 +284,157 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // 6. Navigation Menus
-        $menus = [
-            ['title' => 'Accueil', 'url' => '/', 'order' => 1],
-            ['title' => 'Réalisations', 'url' => '#portfolio', 'order' => 2],
-            ['title' => 'Nos Expertises', 'url' => '#offres', 'order' => 3],
-            ['title' => 'Estimer un Projet', 'url' => '#estimateur', 'order' => 4],
-            ['title' => 'L\'Équipe', 'url' => '#equipe', 'order' => 5],
-            ['title' => 'FAQ', 'url' => '#faq', 'order' => 6],
-            ['title' => 'Contact', 'url' => '#contact', 'order' => 7],
+        // 7. Expertises (CMS Database Model)
+        $expertises = [
+            [
+                'title' => 'Film Corporate & Institutionnel',
+                'slug' => 'film-corporate',
+                'subtitle' => 'Maison de Production Audiovisuelle Casablanca',
+                'seo_title' => 'Film Corporate & Institutionnel Casablanca | SmartFilms Prod Maroc',
+                'seo_description' => 'Production de films corporate haut de gamme à Casablanca et au Maroc. Valorisez vos infrastructures, vos équipes et votre vision stratégique avec une esthétique cinématographique.',
+                'h1' => 'FILM CORPORATE & INSTITUTIONNEL',
+                'hero_desc' => 'Racontez l\'ambition de votre entreprise à travers un storytelling cinématographique puissant et des prises de vues d\'infrastructures d\'exception.',
+                'image' => '/uploads/cinema_corporate_film.png',
+                'deliverables' => [
+                    'Film institutionnel master 4K (2 à 5 minutes)',
+                    'Teasers réseaux sociaux 9:16 pour LinkedIn et Instagram',
+                    'Interviews des dirigeants & collaborateurs clés',
+                    'Banque de plans B-Roll haute fidélité'
+                ],
+                'equipment' => [
+                    'Configurations caméras cinéma calibrées selon les besoins',
+                    'Optiques Cinéma Anamorphiques & Sphériques',
+                    'Prises de vues aériennes drone 4K/6K',
+                    'Éclairage Studio & Gestion lumière continue'
+                ],
+                'category_filter' => 'Film de Marque',
+                'faq' => [
+                    [
+                        'q' => 'Combien de temps faut-il pour produire un film corporate ?',
+                        'a' => 'En moyenne, une production corporate complète nécessite entre 2 à 4 semaines, incluant l\'écriture du scénario, le tournage (1 à 3 jours) et la post-production (montage, étalonnage, sound design).'
+                    ],
+                    [
+                        'q' => 'SmartFilms intervient-il partout au Maroc ?',
+                        'a' => 'Oui. Bien que notre studio soit basé à Casablanca (Bd d\'Anfa), nos équipes régie et caméras tournent régulièrement à Rabat, Tanger, Marrakech, Agadir et sur des sites industriels dans tout le Royaume.'
+                    ],
+                    [
+                        'q' => 'Accompagnez-vous les démarches d\'autorisations de tournage au Maroc ?',
+                        'a' => 'Absolument. Nous accompagnons nos clients dans l\'obtention et la coordination des autorisations administratives nécessaires auprès des autorités compétentes pour sécuriser chaque tournage.'
+                    ]
+                ],
+                'order' => 1,
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Spot Publicitaire & Commercial',
+                'slug' => 'spot-publicitaire',
+                'subtitle' => 'Campagnes TV, Cinéma & Formats Digitaux',
+                'seo_title' => 'Spot Publicitaire & Publicité TV/Digitale Casablanca | SmartFilms Maroc',
+                'seo_description' => 'Création et réalisation de spots publicitaires percutants à Casablanca. Diffusion TV, cinéma et réseaux sociaux calibrée pour maximiser l\'impact et la mémorisation.',
+                'h1' => 'SPOTS PUBLICITAIRES & BRAND FILMS',
+                'hero_desc' => 'Des concepts publicitaires audacieux, des castings rigoureux et une réalisation millimétrée pour imposer votre marque dans l\'esprit du public.',
+                'image' => '/uploads/studio_commercial_spot.png',
+                'deliverables' => [
+                    'Spots TV & Cinéma broadcast masters 4K (15s, 30s, 60s)',
+                    'Déclinaisons digitales dynamiques (Story, Reel, YouTube Ads)',
+                    'Sound design immersif et composition musicale originale',
+                    'Voice-over multilingue (Arabe Darija, Français, Anglais)'
+                ],
+                'equipment' => [
+                    'Caméras Haute Vitesse & Slow-Motion',
+                    'Machinerie travelling & Stabilisation 3 axes',
+                    'Production sonore & Mixage multicanal broadcast',
+                    'Étalonnage couleur DaVinci Resolve Studio HDR'
+                ],
+                'category_filter' => 'Publicité TV',
+                'faq' => [
+                    [
+                        'q' => 'Comment se déroule la conception d\'un spot publicitaire ?',
+                        'a' => 'Nous commençons par l\'élaboration du concept créatif et du storyboard, suivi du casting, du stylisme et du repérage des décors. Après validation, nous orchestrons le tournage et la post-production complète.'
+                    ],
+                    [
+                        'q' => 'Pouvez-vous adapter le spot pour TikTok et Instagram Reels ?',
+                        'a' => 'Oui. Dès la phase de cadrage, nous anticipons les cadrages 9:16 et 1:1 pour livrer des déclinaisons natives parfaitement adaptées aux algorithmes des réseaux sociaux.'
+                    ]
+                ],
+                'order' => 2,
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Production & Captation Événementielle',
+                'slug' => 'production-evenementielle',
+                'subtitle' => 'Congrès, Sommets Internationaux & Galas',
+                'seo_title' => 'Captation Événementielle & Aftermovie Casablanca | SmartFilms Maroc',
+                'seo_description' => 'Couverture audiovisuelle haut de gamme pour sommets internationaux, lancements de produits et galas au Maroc. Régie multi-caméras 4K et aftermovies percutants.',
+                'h1' => 'CAPTATION & PRODUCTION ÉVÉNEMENTIELLE',
+                'hero_desc' => 'Immortalisez vos grands rendez-vous professionnels avec une régie multi-caméras 4K fluide et des aftermovies rythmés livrés en un temps record.',
+                'image' => '/uploads/cinema_corporate_film.png',
+                'deliverables' => [
+                    'Aftermovie officiel dynamique (2 à 3 minutes)',
+                    'Teaser Same-Day Edit (livré pendant l\'événement)',
+                    'Captation intégrale des keynotes & tables rondes',
+                    'Diffusion en direct live streaming multi-plateformes'
+                ],
+                'equipment' => [
+                    'Régie vidéo broadcast 4K',
+                    'Systèmes de transmission HF sans fil longue portée',
+                    'Caméras PTZ robotisées & tourelles',
+                    'Prise de son HF professionnelle Sennheiser'
+                ],
+                'category_filter' => 'Événementiel',
+                'faq' => [
+                    [
+                        'q' => 'Pouvez-vous livrer une vidéo le jour même de l\'événement ?',
+                        'a' => 'Oui. Grâce à notre régie de montage nomade sur site, nous produisons des teasers "Same-Day" en quelques heures pour alimenter vos réseaux sociaux en temps réel.'
+                    ],
+                    [
+                        'q' => 'Comment est dimensionnée l\'équipe technique sur un événement ?',
+                        'a' => 'Selon l\'envergure du projet, nos équipes événementielles sont calibrées sur-mesure (cadreurs, télépilote, ingénieur son, réalisation régie et monteur sur site).'
+                    ]
+                ],
+                'order' => 3,
+                'is_active' => true,
+            ],
+            [
+                'title' => 'Prise de Vue Drone 4K/6K & FPV',
+                'slug' => 'drone-aerien',
+                'subtitle' => 'Captations Aériennes & Télépilotes Agréés',
+                'seo_title' => 'Prise de Vue par Drone 4K/6K & FPV Maroc | SmartFilms Prod',
+                'seo_description' => 'Images aériennes spectaculaires par drone et FPV à Casablanca et au Maroc. Télépilotes certifiés, conformité réglementaire et qualité cinéma.',
+                'h1' => 'PRISES DE VUES AÉRIENNES & DRONE FPV',
+                'hero_desc' => 'Prenez de la hauteur avec des perspectives aériennes spectaculaires. Drones cinéma stabilisés et drones FPV de précision pour valoriser vos sites industriels et projets d\'envergure.',
+                'image' => '/uploads/studio_commercial_spot.png',
+                'deliverables' => [
+                    'Plans aériens cinématiques 4K/6K Prores & RAW',
+                    'Plans séquences FPV immersifs intérieur/extérieur',
+                    'Survols d\'infrastructures et d\'aménagements',
+                    'Intégration directe dans vos films de marque'
+                ],
+                'equipment' => [
+                    'Drones cinéma professionnels haute définition',
+                    'Drones FPV agiles pour plans dynamiques',
+                    'Systèmes de double commande pilote / cadreur',
+                    'Capteurs stabilisés sur 3 axes'
+                ],
+                'category_filter' => 'Drone',
+                'faq' => [
+                    [
+                        'q' => 'Les vols par drone sont-ils conformes à la réglementation au Maroc ?',
+                        'a' => 'Oui. Nos vols sont encadrés par des télépilotes qualifiés avec l\'ensemble des autorisations administratives et protocoles de sécurité requis pour chaque mission.'
+                    ],
+                    [
+                        'q' => 'Quelle est la différence entre un drone classique et un drone FPV ?',
+                        'a' => 'Le drone classique offre des plans larges et stables à haute altitude. Le drone FPV (First Person View) permet des trajectoires dynamiques, des passages étroits en intérieur et des sensations de vitesse uniques.'
+                    ]
+                ],
+                'order' => 4,
+                'is_active' => true,
+            ]
         ];
 
-        Menu::truncate();
-        foreach ($menus as $m) {
-            Menu::create($m);
+        \App\Models\Expertise::truncate();
+        foreach ($expertises as $exp) {
+            \App\Models\Expertise::create($exp);
         }
     }
 }
