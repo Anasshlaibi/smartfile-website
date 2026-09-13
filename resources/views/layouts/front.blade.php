@@ -227,21 +227,23 @@
             transform: scale(1) translate3d(0, 0, 0) !important;
         }
 
-        /* Navbar & Two-Logo Crossfade */
+        /* Navbar & High-Contrast Logo System for White Canvas */
         #mainHeader {
-            background-color: transparent;
-            border-bottom: 1px solid transparent;
-            box-shadow: none;
+            background-color: rgba(250, 249, 246, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(45, 38, 88, 0.08);
+            box-shadow: 0 4px 20px rgba(45, 38, 88, 0.04);
             transition:
-                background-color 500ms var(--ease-premium),
-                color 400ms ease,
-                box-shadow 500ms ease,
-                border-color 500ms ease,
-                padding 450ms var(--ease-premium);
+                background-color 400ms var(--ease-premium),
+                color 300ms ease,
+                box-shadow 400ms ease,
+                border-color 400ms ease,
+                padding 400ms var(--ease-premium);
         }
         #navInner {
-            height: 80px;
-            transition: height 450ms var(--ease-premium);
+            height: 76px;
+            transition: height 400ms var(--ease-premium);
         }
         .logo-white,
         .logo-black {
@@ -250,21 +252,20 @@
             top: 50%;
             transform: translateY(-50%) scale(1);
             transition:
-                opacity 400ms var(--ease-premium),
-                transform 500ms var(--ease-premium);
+                opacity 350ms var(--ease-premium),
+                transform 400ms var(--ease-premium);
             pointer-events: none;
         }
         .logo-white {
-            opacity: 1;
+            opacity: 0;
         }
         .logo-black {
-            opacity: 0;
-            transform: translateY(-50%) scale(0.97);
+            opacity: 1;
         }
         .nav-link {
-            color: rgba(255, 255, 255, 0.9);
+            color: #252238 !important;
             position: relative;
-            transition: color 400ms ease;
+            transition: color 300ms ease;
         }
         .nav-link::after {
             content: '';
@@ -277,87 +278,47 @@
             transition: width 300ms var(--ease-premium);
         }
         .nav-link:hover {
-            color: #ffffff;
+            color: #FF5A68 !important;
         }
         .nav-link:hover::after {
             width: 100%;
         }
         .nav-link.active-link::after {
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.7);
+            background-color: #2D2658;
         }
         .header-cta {
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            background-color: transparent;
-            transition: color 400ms ease, border-color 400ms ease, background-color 400ms ease, transform 300ms ease;
+            color: #252238 !important;
+            border: 1px solid rgba(45, 38, 88, 0.25) !important;
+            background-color: transparent !important;
+            transition: color 300ms ease, border-color 300ms ease, background-color 300ms ease, transform 300ms ease;
         }
         .header-cta:hover {
-            background-color: #ffffff;
-            color: #2D2658;
-            border-color: #ffffff;
+            background-color: #2D2658 !important;
+            color: #ffffff !important;
+            border-color: #2D2658 !important;
             transform: scale(1.02);
         }
         #mobileMenuBtn {
-            color: #ffffff;
-            transition: color 400ms ease;
+            color: #252238 !important;
+            transition: color 300ms ease;
         }
 
         /* Scrolled Navbar Theme */
         #mainHeader.is-scrolled,
         #mainHeader.scrolled {
-            background-color: rgba(248, 246, 241, 0.96) !important;
-            backdrop-filter: blur(16px) !important;
-            -webkit-backdrop-filter: blur(16px) !important;
-            border-bottom: 1px solid rgba(45, 38, 88, 0.08) !important;
-            box-shadow: 0 8px 30px rgba(45, 38, 88, 0.05) !important;
+            background-color: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 8px 30px rgba(45, 38, 88, 0.08) !important;
         }
         #mainHeader.is-scrolled #navInner,
         #mainHeader.scrolled #navInner {
-            height: 68px !important;
-        }
-        #mainHeader.is-scrolled .logo-white,
-        #mainHeader.scrolled .logo-white {
-            opacity: 0 !important;
-            transform: translateY(-50%) scale(0.97) !important;
-        }
-        #mainHeader.is-scrolled .logo-black,
-        #mainHeader.scrolled .logo-black {
-            opacity: 1 !important;
-            transform: translateY(-50%) scale(1) !important;
-        }
-        #mainHeader.is-scrolled .nav-link,
-        #mainHeader.scrolled .nav-link {
-            color: #252238 !important;
-        }
-        #mainHeader.is-scrolled .nav-link:hover,
-        #mainHeader.scrolled .nav-link:hover {
-            color: #FF5A68 !important;
-        }
-        #mainHeader.is-scrolled .nav-link.active-link::after,
-        #mainHeader.scrolled .nav-link.active-link::after {
-            background-color: #2D2658 !important;
-        }
-        #mainHeader.is-scrolled .header-cta,
-        #mainHeader.scrolled .header-cta {
-            color: #252238 !important;
-            border-color: rgba(45, 38, 88, 0.25) !important;
-            background-color: transparent !important;
-        }
-        #mainHeader.is-scrolled .header-cta:hover,
-        #mainHeader.scrolled .header-cta:hover {
-            background-color: #2D2658 !important;
-            color: #ffffff !important;
-            border-color: #2D2658 !important;
-        }
-        #mainHeader.is-scrolled #mobileMenuBtn,
-        #mainHeader.scrolled #mobileMenuBtn {
-            color: #252238 !important;
+            height: 66px !important;
         }
         #mainHeader.is-scrolled #topInfoStrip,
         #mainHeader.scrolled #topInfoStrip {
             max-height: 0 !important;
-            padding: 0 !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
             opacity: 0 !important;
             overflow: hidden !important;
             border-bottom: none !important;
