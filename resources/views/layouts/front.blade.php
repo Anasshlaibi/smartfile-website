@@ -406,14 +406,14 @@
         </div>
     </div>
 
-    <!-- WhatsApp VIP Concierge Button -->
-    <a href="https://wa.me/{{ $settings['whatsapp'] ?? '212617202345' }}?text={{ urlencode('Bonjour SmartFilms, j\'aimerais échanger sur un projet de production audiovisuelle.') }}" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-3 transition-all hover:scale-105 group border-2 border-white/20">
-        <span class="relative flex h-3 w-3">
+    <!-- WhatsApp VIP Concierge Button (Smaller & Soft Green) -->
+    <a href="https://wa.me/{{ $settings['whatsapp'] ?? '212617202345' }}?text={{ urlencode('Bonjour SmartFilms, j\'aimerais échanger sur un projet de production audiovisuelle.') }}" target="_blank" class="fixed bottom-5 right-5 z-40 bg-[#25D366]/90 hover:bg-[#25D366] text-white px-4 py-2.5 rounded-full shadow-lg flex items-center gap-2.5 transition-all hover:scale-105 group border border-white/30 backdrop-blur-sm">
+        <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
         </span>
-        <i class="bi bi-whatsapp text-lg"></i>
-        <span class="text-xs uppercase font-bold tracking-wider hidden sm:inline">WhatsApp Studio</span>
+        <i class="bi bi-whatsapp text-sm"></i>
+        <span class="text-[11px] uppercase font-bold tracking-wider hidden sm:inline">WhatsApp Studio</span>
     </a>
 
     <!-- Core Motion, Scroll Animation & Interactive Scripts -->
