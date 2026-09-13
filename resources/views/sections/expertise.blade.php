@@ -1,4 +1,4 @@
-<!-- CHAPTER 03: NOS EXPERTISES (#F8F6F1 WARM SOFT EDITORIAL CANVAS) -->
+<!-- CHAPTER 03: NOS EXPERTISES (WARM BACKGROUND WITH CINEMATIC DARK FADE CARDS) -->
 <section id="expertises" class="bg-[#F8F6F1] text-[#252238] py-20 md:py-32 relative overflow-hidden border-t border-b border-[#2D2658]/10">
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -32,7 +32,6 @@
             // Fetch dynamically from Database (editable via Admin Panel /admin/expertises)
             $dbExpertises = \App\Models\Expertise::where('is_active', true)->orderBy('order')->get();
 
-            // Default fallback if database is not yet populated
             if ($dbExpertises->isEmpty()) {
                 $expertisesList = [
                     [
@@ -89,7 +88,7 @@
             }
         @endphp
 
-        <!-- 6 Expertises Cards Grid (Soft Warm White Editorial Theme) -->
+        <!-- 6 Expertises Cards Grid (Cinematic Dark Bottom Fade over Cards) -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             @foreach($expertisesList as $idx => $item)
                 @php
@@ -101,23 +100,25 @@
                     $image = is_object($item) ? ($item->image ?? '/uploads/expertise_01_strategy.jpg') : ($item['image'] ?? '/uploads/expertise_01_strategy.jpg');
                 @endphp
 
-                <div class="group relative bg-white border border-[#2D2658]/10 rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between shadow-[0_4px_20px_rgba(45,38,88,0.03)] hover:shadow-[0_20px_40px_rgba(45,38,88,0.08)] hover:border-[#FF5A68]/30 transition-all duration-400">
+                <div class="group relative bg-[#0D0E1C] border border-[#2D2658]/20 rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between shadow-xl hover:shadow-2xl hover:border-[#FF5A68]/40 transition-all duration-400">
                     
-                    <!-- Background Visual Image Banner -->
-                    <div class="relative w-full h-52 sm:h-56 overflow-hidden bg-[#F4F2F7]">
-                        <img src="{{ $image }}" alt="{{ $title }}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out">
+                    <!-- Background Visual Image Banner with Smooth Bottom Fade Transition -->
+                    <div class="relative w-full h-56 sm:h-60 overflow-hidden bg-[#070812]">
+                        <img src="{{ $image }}" alt="{{ $title }}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100">
+                        <!-- Dark Fade Overlay Rising from the Bottom of the Image -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0D0E1C] via-[#0D0E1C]/50 to-transparent"></div>
                     </div>
 
-                    <!-- Card Body Content -->
-                    <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-6">
+                    <!-- Card Body Content with Soft Dark Base Gradient -->
+                    <div class="p-6 sm:p-7 pt-1 flex-1 flex flex-col justify-between space-y-6 bg-gradient-to-b from-[#0D0E1C] to-[#080914]">
                         <div class="space-y-3">
                             <!-- Number Indicator -->
-                            <span class="font-mono text-xs font-bold text-[#FF5A68] tracking-wider block">
+                            <span class="font-mono text-xs font-bold text-white/50 tracking-wider block">
                                 {{ $num }} —
                             </span>
 
                             <!-- Title -->
-                            <h3 class="text-lg sm:text-xl font-bold uppercase tracking-tight text-[#2D2658] group-hover:text-[#FF5A68] transition-colors leading-snug">
+                            <h3 class="text-lg sm:text-xl font-bold uppercase tracking-tight text-white group-hover:text-[#FF5A68] transition-colors leading-snug">
                                 <a href="{{ url('/expertises/' . $slug) }}">
                                     {{ $title }}
                                 </a>
@@ -125,22 +126,22 @@
 
                             <!-- Subtitle / Catchphrase -->
                             @if($subtitle)
-                                <p class="text-[#40376F] text-xs sm:text-sm font-medium leading-relaxed">
+                                <p class="text-white/90 text-xs sm:text-sm font-medium leading-relaxed">
                                     {{ $subtitle }}
                                 </p>
                             @endif
 
                             <!-- Description -->
-                            <p class="text-[#726E8D] text-xs sm:text-sm font-light leading-relaxed">
+                            <p class="text-[#A09DB8] text-xs sm:text-sm font-light leading-relaxed">
                                 {{ $desc }}
                             </p>
                         </div>
 
                         <!-- Bottom Action Link with Circle Arrow -->
-                        <div class="pt-4 border-t border-[#2D2658]/10 flex items-center justify-between">
-                            <a href="{{ url('/expertises/' . $slug) }}" class="inline-flex items-center gap-3 text-xs sm:text-sm font-bold text-[#2D2658] group-hover:text-[#FF5A68] transition-colors">
+                        <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                            <a href="{{ url('/expertises/' . $slug) }}" class="inline-flex items-center gap-3 text-xs sm:text-sm font-bold text-white group-hover:text-[#FF5A68] transition-colors">
                                 <span>Découvrir</span>
-                                <span class="w-7 h-7 rounded-full border border-[#2D2658]/20 group-hover:border-[#FF5A68] group-hover:bg-[#FF5A68] group-hover:text-white flex items-center justify-center text-xs transition-all duration-300">
+                                <span class="w-7 h-7 rounded-full border border-white/20 group-hover:border-[#FF5A68] group-hover:bg-[#FF5A68] group-hover:text-white flex items-center justify-center text-xs transition-all duration-300">
                                     <i class="bi bi-arrow-right"></i>
                                 </span>
                             </a>
