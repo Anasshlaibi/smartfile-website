@@ -1,37 +1,37 @@
-<!-- CHAPTER 07: GUIDED PROJECT CONSULTATION & ESTIMATOR (#101229 / #171936) -->
-<section id="estimateur" class="bg-[#101229] text-white py-28 md:py-36 border-t border-white/10 relative overflow-hidden">
+<!-- CHAPTER 07: GUIDED PROJECT CONSULTATION & ESTIMATOR (#F8F6F1 WARM OFF-WHITE) -->
+<section id="estimateur" class="bg-[#F8F6F1] text-[#252238] py-24 md:py-36 border-b border-[#2D2658]/10 relative overflow-hidden">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Header with Masked Text Reveal -->
         <div class="text-center max-w-2xl mx-auto mb-16">
-            <span class="reveal-fade-up text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#FF4D42] inline-block mb-3">
+            <span class="reveal-fade-up text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#FF5A68] inline-block mb-3">
                 07 &bull; CONSULTATION & CHIFFRAGE EN LIGNE
             </span>
-            <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight text-white">
+            <h2 class="text-4xl sm:text-5xl font-black uppercase tracking-tight text-[#2D2658]">
                 <span class="reveal-mask inline-block">
-                    <span class="reveal-line inline-block">ESTIMEZ VOTRE</span>
+                    <span class="reveal-line inline-block font-black">ESTIMEZ VOTRE</span>
                 </span>
                 <span class="reveal-mask inline-block">
-                    <span class="reveal-line delay-100 font-serif-italic font-normal lowercase text-4xl sm:text-5xl text-[#B8BDE0] inline-block">
+                    <span class="reveal-line delay-100 font-serif-italic font-normal lowercase text-4xl sm:text-5xl text-[#40376F] inline-block">
                         production
                     </span>
                 </span>
             </h2>
-            <p class="reveal-fade-up delay-200 text-[#B8BDE0] text-sm md:text-base font-light mt-3">
+            <p class="reveal-fade-up delay-200 text-[#726E8D] text-sm md:text-base font-light mt-3">
                 Définissez les contours de votre projet en 6 étapes rapides et recevez une proposition chiffrée sous 24 heures ouvrées.
             </p>
         </div>
 
         <!-- Consultation Wizard Container -->
-        <div class="bg-[#171936] rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl relative reveal-fade-up delay-300">
+        <div class="bg-white rounded-[28px] p-8 md:p-12 border border-[#2D2658]/10 shadow-xl relative reveal-fade-up delay-300">
             
             <!-- Progress Bar -->
-            <div class="flex items-center justify-between mb-8 pb-6 border-b border-white/10">
+            <div class="flex items-center justify-between mb-8 pb-6 border-b border-[#2D2658]/10">
                 <div class="flex items-center gap-3">
-                    <span id="stepIndicatorNumber" class="w-8 h-8 rounded-full bg-[#FF4D42] text-white flex items-center justify-center font-bold text-xs font-mono transition-transform duration-300">1</span>
-                    <span id="stepIndicatorTitle" class="text-xs font-bold uppercase tracking-wider text-white">01 — Projet</span>
+                    <span id="stepIndicatorNumber" class="w-8 h-8 rounded-full bg-[#2D2658] text-white flex items-center justify-center font-bold text-xs font-mono transition-transform duration-300">1</span>
+                    <span id="stepIndicatorTitle" class="text-xs font-bold uppercase tracking-wider text-[#2D2658]">01 — Projet</span>
                 </div>
-                <div class="text-xs text-slate-400 font-mono">Étape <span id="currentStepNum" class="text-[#FF4D42] font-bold">1</span> / 6</div>
+                <div class="text-xs text-[#726E8D] font-mono">Étape <span id="currentStepNum" class="text-[#FF5A68] font-bold">1</span> / 6</div>
             </div>
 
             <form id="estimatorForm" onsubmit="submitEstimator(event)">
@@ -39,7 +39,7 @@
 
                 <!-- Step 1: 01 — Projet -->
                 <div id="step-1" class="estimator-step step-in space-y-6">
-                    <label class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-300">01 &bull; Quel format audiovisuel souhaitez-vous concevoir ?</label>
+                    <label class="block text-xs font-mono font-bold uppercase tracking-wider text-[#2D2658]">01 &bull; Quel format audiovisuel souhaitez-vous concevoir ?</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         @php
                             $types = [
@@ -50,11 +50,11 @@
                             ];
                         @endphp
                         @foreach($types as $t)
-                            <label class="p-5 rounded-2xl border border-white/10 hover:border-[#FF4D42] cursor-pointer transition-all flex flex-col justify-between bg-white/5 has-[:checked]:border-[#FF4D42] has-[:checked]:bg-[#FF4D42]/10 hover:scale-[1.01]">
+                            <label class="p-5 rounded-2xl border border-[#2D2658]/10 hover:border-[#FF5A68] cursor-pointer transition-all flex flex-col justify-between bg-[#F8F6F1] has-[:checked]:border-[#FF5A68] has-[:checked]:bg-[#FADDE3]/30 hover:scale-[1.01]">
                                 <input type="radio" name="project_type" value="{{ $t['val'] }}" class="hidden" {{ $loop->first ? 'checked' : '' }}>
                                 <div>
-                                    <h4 class="font-bold text-sm text-white mb-1 uppercase">{{ $t['val'] }}</h4>
-                                    <p class="text-xs text-[#B8BDE0] font-light">{{ $t['desc'] }}</p>
+                                    <h4 class="font-bold text-sm text-[#2D2658] mb-1 uppercase">{{ $t['val'] }}</h4>
+                                    <p class="text-xs text-[#726E8D] font-light">{{ $t['desc'] }}</p>
                                 </div>
                             </label>
                         @endforeach
@@ -63,7 +63,7 @@
 
                 <!-- Step 2: 02 — Objectif -->
                 <div id="step-2" class="estimator-step hidden space-y-6">
-                    <label class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-300">02 &bull; Quel est l'objectif prioritaire de cette production ?</label>
+                    <label class="block text-xs font-mono font-bold uppercase tracking-wider text-[#2D2658]">02 &bull; Quel est l'objectif prioritaire de cette production ?</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         @php
                             $objectives = [
@@ -74,11 +74,11 @@
                             ];
                         @endphp
                         @foreach($objectives as $obj)
-                            <label class="p-5 rounded-2xl border border-white/10 hover:border-[#FF4D42] cursor-pointer transition-all flex flex-col justify-between bg-white/5 has-[:checked]:border-[#FF4D42] has-[:checked]:bg-[#FF4D42]/10 hover:scale-[1.01]">
+                            <label class="p-5 rounded-2xl border border-[#2D2658]/10 hover:border-[#FF5A68] cursor-pointer transition-all flex flex-col justify-between bg-[#F8F6F1] has-[:checked]:border-[#FF5A68] has-[:checked]:bg-[#FADDE3]/30 hover:scale-[1.01]">
                                 <input type="radio" name="objective" value="{{ $obj['val'] }}" class="hidden" {{ $loop->first ? 'checked' : '' }}>
                                 <div>
-                                    <h4 class="font-bold text-sm text-white mb-1 uppercase">{{ $obj['val'] }}</h4>
-                                    <p class="text-xs text-[#B8BDE0] font-light">{{ $obj['desc'] }}</p>
+                                    <h4 class="font-bold text-sm text-[#2D2658] mb-1 uppercase">{{ $obj['val'] }}</h4>
+                                    <p class="text-xs text-[#726E8D] font-light">{{ $obj['desc'] }}</p>
                                 </div>
                             </label>
                         @endforeach
@@ -87,7 +87,7 @@
 
                 <!-- Step 3: 03 — Formats / livrables -->
                 <div id="step-3" class="estimator-step hidden space-y-6">
-                    <label class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-300">03 &bull; Quels sont les livrables attendus ?</label>
+                    <label class="block text-xs font-mono font-bold uppercase tracking-wider text-[#2D2658]">03 &bull; Quels sont les livrables attendus ?</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         @php
                             $formats = [
@@ -98,11 +98,11 @@
                             ];
                         @endphp
                         @foreach($formats as $f)
-                            <label class="p-5 rounded-2xl border border-white/10 hover:border-[#FF4D42] cursor-pointer transition-all flex flex-col justify-between bg-white/5 has-[:checked]:border-[#FF4D42] has-[:checked]:bg-[#FF4D42]/10 hover:scale-[1.01]">
+                            <label class="p-5 rounded-2xl border border-[#2D2658]/10 hover:border-[#FF5A68] cursor-pointer transition-all flex flex-col justify-between bg-[#F8F6F1] has-[:checked]:border-[#FF5A68] has-[:checked]:bg-[#FADDE3]/30 hover:scale-[1.01]">
                                 <input type="radio" name="formats" value="{{ $f['val'] }}" class="hidden" {{ $loop->first ? 'checked' : '' }}>
                                 <div>
-                                    <h4 class="font-bold text-sm text-white mb-1 uppercase">{{ $f['val'] }}</h4>
-                                    <p class="text-xs text-[#B8BDE0] font-light">{{ $f['desc'] }}</p>
+                                    <h4 class="font-bold text-sm text-[#2D2658] mb-1 uppercase">{{ $f['val'] }}</h4>
+                                    <p class="text-xs text-[#726E8D] font-light">{{ $f['desc'] }}</p>
                                 </div>
                             </label>
                         @endforeach
@@ -111,7 +111,7 @@
 
                 <!-- Step 4: 04 — Budget -->
                 <div id="step-4" class="estimator-step hidden space-y-6">
-                    <label class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-300">04 &bull; Quelle est votre enveloppe budgétaire prévisionnelle ?</label>
+                    <label class="block text-xs font-mono font-bold uppercase tracking-wider text-[#2D2658]">04 &bull; Quelle est votre enveloppe budgétaire prévisionnelle ?</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         @php
                             $budgets = [
@@ -124,11 +124,11 @@
                             ];
                         @endphp
                         @foreach($budgets as $b)
-                            <label class="p-5 rounded-2xl border border-white/10 hover:border-[#FF4D42] cursor-pointer transition-all flex flex-col justify-between bg-white/5 has-[:checked]:border-[#FF4D42] has-[:checked]:bg-[#FF4D42]/10 hover:scale-[1.01]">
+                            <label class="p-5 rounded-2xl border border-[#2D2658]/10 hover:border-[#FF5A68] cursor-pointer transition-all flex flex-col justify-between bg-[#F8F6F1] has-[:checked]:border-[#FF5A68] has-[:checked]:bg-[#FADDE3]/30 hover:scale-[1.01]">
                                 <input type="radio" name="budget_tier" value="{{ $b['val'] }}" class="hidden" {{ $loop->index == 1 ? 'checked' : '' }}>
                                 <div>
-                                    <h4 class="font-bold text-sm text-white mb-1">{{ $b['val'] }}</h4>
-                                    <p class="text-xs text-[#B8BDE0] font-light">{{ $b['desc'] }}</p>
+                                    <h4 class="font-bold text-sm text-[#2D2658] mb-1">{{ $b['val'] }}</h4>
+                                    <p class="text-xs text-[#726E8D] font-light">{{ $b['desc'] }}</p>
                                 </div>
                             </label>
                         @endforeach
@@ -137,7 +137,7 @@
 
                 <!-- Step 5: 05 — Calendrier -->
                 <div id="step-5" class="estimator-step hidden space-y-6">
-                    <label class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-300">05 &bull; Quel est votre calendrier de livraison souhaité ?</label>
+                    <label class="block text-xs font-mono font-bold uppercase tracking-wider text-[#2D2658]">05 &bull; Quel est votre calendrier de livraison souhaité ?</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         @php
                             $timelines = [
@@ -148,11 +148,11 @@
                             ];
                         @endphp
                         @foreach($timelines as $time)
-                            <label class="p-5 rounded-2xl border border-white/10 hover:border-[#FF4D42] cursor-pointer transition-all flex flex-col justify-between bg-white/5 has-[:checked]:border-[#FF4D42] has-[:checked]:bg-[#FF4D42]/10 hover:scale-[1.01]">
+                            <label class="p-5 rounded-2xl border border-[#2D2658]/10 hover:border-[#FF5A68] cursor-pointer transition-all flex flex-col justify-between bg-[#F8F6F1] has-[:checked]:border-[#FF5A68] has-[:checked]:bg-[#FADDE3]/30 hover:scale-[1.01]">
                                 <input type="radio" name="timeline" value="{{ $time['val'] }}" class="hidden" {{ $loop->first ? 'checked' : '' }}>
                                 <div>
-                                    <h4 class="font-bold text-sm text-white mb-1 uppercase">{{ $time['val'] }}</h4>
-                                    <p class="text-xs text-[#B8BDE0] font-light">{{ $time['desc'] }}</p>
+                                    <h4 class="font-bold text-sm text-[#2D2658] mb-1 uppercase">{{ $time['val'] }}</h4>
+                                    <p class="text-xs text-[#726E8D] font-light">{{ $time['desc'] }}</p>
                                 </div>
                             </label>
                         @endforeach
@@ -161,41 +161,41 @@
 
                 <!-- Step 6: 06 — Contact -->
                 <div id="step-6" class="estimator-step hidden space-y-6">
-                    <label class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-300">06 &bull; Vos coordonnées pour l'envoi de l'estimation chiffrée</label>
+                    <label class="block text-xs font-mono font-bold uppercase tracking-wider text-[#2D2658]">06 &bull; Vos coordonnées pour l'envoi de l'estimation chiffrée</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">Nom & Prénom *</label>
-                            <input type="text" name="name" required placeholder="Votre nom complet" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white focus:outline-none focus:border-[#FF4D42]">
+                            <label class="block text-[11px] font-mono uppercase text-[#726E8D] mb-1">Nom & Prénom *</label>
+                            <input type="text" name="name" required placeholder="Votre nom complet" class="w-full px-4 py-3 bg-[#F8F6F1] border border-[#2D2658]/15 rounded-xl text-sm text-[#252238] focus:outline-none focus:border-[#FF5A68]">
                         </div>
                         <div>
-                            <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">Téléphone Direct *</label>
-                            <input type="tel" name="phone" required placeholder="06..." class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white focus:outline-none focus:border-[#FF4D42]">
+                            <label class="block text-[11px] font-mono uppercase text-[#726E8D] mb-1">Téléphone Direct *</label>
+                            <input type="tel" name="phone" required placeholder="06..." class="w-full px-4 py-3 bg-[#F8F6F1] border border-[#2D2658]/15 rounded-xl text-sm text-[#252238] focus:outline-none focus:border-[#FF5A68]">
                         </div>
                         <div>
-                            <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">Entreprise / Organisation</label>
-                            <input type="text" name="company" placeholder="Nom de la société" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white focus:outline-none focus:border-[#FF4D42]">
+                            <label class="block text-[11px] font-mono uppercase text-[#726E8D] mb-1">Entreprise / Organisation</label>
+                            <input type="text" name="company" placeholder="Nom de la société" class="w-full px-4 py-3 bg-[#F8F6F1] border border-[#2D2658]/15 rounded-xl text-sm text-[#252238] focus:outline-none focus:border-[#FF5A68]">
                         </div>
                         <div>
-                            <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">Email Professionnel</label>
-                            <input type="email" name="email" placeholder="contact@entreprise.com" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white focus:outline-none focus:border-[#FF4D42]">
+                            <label class="block text-[11px] font-mono uppercase text-[#726E8D] mb-1">Email Professionnel</label>
+                            <input type="email" name="email" placeholder="contact@entreprise.com" class="w-full px-4 py-3 bg-[#F8F6F1] border border-[#2D2658]/15 rounded-xl text-sm text-[#252238] focus:outline-none focus:border-[#FF5A68]">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">Précisions sur le tournage (Optionnel)</label>
-                        <textarea name="message" rows="3" placeholder="Lieux envisagés, éléments clés à filmer, références visuelles..." class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-sm text-white focus:outline-none focus:border-[#FF4D42]"></textarea>
+                        <label class="block text-[11px] font-mono uppercase text-[#726E8D] mb-1">Précisions sur le tournage (Optionnel)</label>
+                        <textarea name="message" rows="3" placeholder="Lieux envisagés, éléments clés à filmer, références visuelles..." class="w-full px-4 py-3 bg-[#F8F6F1] border border-[#2D2658]/15 rounded-xl text-sm text-[#252238] focus:outline-none focus:border-[#FF5A68]"></textarea>
                     </div>
                 </div>
 
                 <!-- Navigation Buttons -->
-                <div class="flex justify-between items-center pt-8 border-t border-white/10 mt-8">
-                    <button type="button" id="prevStepBtn" onclick="changeStep(-1)" class="px-6 py-2.5 rounded-full border border-white/20 text-xs font-mono font-bold uppercase tracking-wider text-slate-300 hover:text-white hidden">
+                <div class="flex justify-between items-center pt-8 border-t border-[#2D2658]/10 mt-8">
+                    <button type="button" id="prevStepBtn" onclick="changeStep(-1)" class="px-6 py-2.5 rounded-full border border-[#2D2658]/20 text-xs font-mono font-bold uppercase tracking-wider text-[#2D2658] hover:bg-[#F4F2F7] hidden">
                         <i class="bi bi-arrow-left mr-2"></i> Précédent
                     </button>
                     <div></div>
-                    <button type="button" id="nextStepBtn" onclick="changeStep(1)" class="bg-[#FF4D42] hover:bg-[#E94239] text-white px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-xl shadow-rose-500/25">
+                    <button type="button" id="nextStepBtn" onclick="changeStep(1)" class="bg-[#2D2658] hover:bg-[#40376F] text-white px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-md">
                         Suivant <i class="bi bi-arrow-right ml-2"></i>
                     </button>
-                    <button type="submit" id="submitStepBtn" class="bg-[#FF4D42] hover:bg-[#E94239] text-white px-10 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-xl shadow-rose-500/30 hidden">
+                    <button type="submit" id="submitStepBtn" class="bg-[#FF5A68] hover:bg-[#E84554] text-white px-10 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-xl shadow-rose-500/30 hidden">
                         Recevoir mon chiffrage <i class="bi bi-send ml-2"></i>
                     </button>
                 </div>
@@ -203,11 +203,11 @@
 
             <!-- Success Box -->
             <div id="estimatorSuccess" class="hidden text-center py-12 space-y-4">
-                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center text-3xl mx-auto border border-emerald-500/40">
+                <div class="w-16 h-16 bg-emerald-500/15 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto border border-emerald-500/30">
                     <i class="bi bi-check2"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-white">Demande transmise à notre régie</h3>
-                <p class="text-[#B8BDE0] text-sm max-w-md mx-auto font-light">
+                <h3 class="text-2xl font-bold text-[#2D2658]">Demande transmise à notre régie</h3>
+                <p class="text-[#726E8D] text-sm max-w-md mx-auto font-light">
                     Nous étudions vos paramètres de production et reviendrons vers vous sous 24h ouvrées avec une proposition chiffrée détaillée.
                 </p>
                 <a href="https://wa.me/{{ $settings['whatsapp'] ?? '212617202345' }}?text={{ urlencode('Bonjour SmartFilms, je viens de soumettre mon estimation sur le site.') }}" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">

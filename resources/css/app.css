@@ -5,15 +5,17 @@
 @tailwind utilities;
 
 :root {
-    /* Color Tokens */
-    --brand-obsidian: #080914;
-    --brand-navy: #101229;
-    --brand-surface: #171936;
-    --brand-warm-white: #F7F6F3;
-    --brand-coral: #FF4D42;
-    --brand-coral-hover: #E94239;
-    --brand-lavender: #B8BDE0;
-    --brand-muted: #8D91A8;
+    /* Smart Films Editorial Color Tokens */
+    --brand-primary: #2D2658;       /* Primary Dark Purple / Soft Navy */
+    --brand-secondary: #40376F;     /* Secondary Purple */
+    --brand-coral: #FF5A68;         /* Primary Coral / Soft Red */
+    --brand-coral-hover: #E84554;
+    --brand-pink: #FADDE3;          /* Soft Pink */
+    --brand-bg: #F8F6F1;            /* Warm White */
+    --brand-surface: #F4F2F7;       /* Soft Surface */
+    --brand-lavender: #ECE9F3;      /* Muted Lavender */
+    --brand-text: #252238;          /* Main Dark Text */
+    --brand-muted: #726E8D;         /* Muted Text */
 
     /* Cinematic Motion Tokens */
     --duration-micro: 200ms;
@@ -23,18 +25,19 @@
 
     --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 @layer base {
     html {
         scroll-behavior: smooth;
         font-family: 'Outfit', sans-serif;
-        background-color: var(--brand-obsidian);
-        color: var(--brand-navy);
+        background-color: var(--brand-bg);
+        color: var(--brand-text);
     }
     body {
         overflow-x: hidden;
+        background-color: var(--brand-bg);
+        color: var(--brand-text);
         selection-background-color: var(--brand-coral);
         selection-color: #ffffff;
     }
@@ -127,7 +130,7 @@
 
 .reveal-fade-up {
     opacity: 0;
-    transform: translate3d(0, 36px, 0);
+    transform: translate3d(0, 32px, 0);
     transition: opacity 0.85s var(--ease-premium), transform 0.85s var(--ease-premium);
     will-change: opacity, transform;
 }
@@ -139,7 +142,7 @@
 
 .reveal-left {
     opacity: 0;
-    transform: translate3d(-40px, 0, 0);
+    transform: translate3d(-36px, 0, 0);
     transition: opacity 0.85s var(--ease-premium), transform 0.85s var(--ease-premium);
     will-change: opacity, transform;
 }
@@ -151,7 +154,7 @@
 
 .reveal-right {
     opacity: 0;
-    transform: translate3d(40px, 0, 0);
+    transform: translate3d(36px, 0, 0);
     transition: opacity 0.85s var(--ease-premium), transform 0.85s var(--ease-premium);
     will-change: opacity, transform;
 }
@@ -163,7 +166,7 @@
 
 .reveal-scale-up {
     opacity: 0;
-    transform: scale(0.94) translate3d(0, 25px, 0);
+    transform: scale(0.96) translate3d(0, 20px, 0);
     transition: opacity 0.85s var(--ease-premium), transform 0.85s var(--ease-premium);
     will-change: opacity, transform;
 }
@@ -217,7 +220,7 @@
 
 /* Nav Links Micro-Interactions */
 .nav-link {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.9);
     position: relative;
     transition: color 400ms ease;
 }
@@ -229,7 +232,7 @@
     left: 0;
     width: 0%;
     height: 2px;
-    background-color: #FF4D42;
+    background-color: #FF5A68;
     transition: width 300ms var(--ease-premium);
 }
 
@@ -256,7 +259,7 @@
 
 .header-cta:hover {
     background-color: #ffffff;
-    color: #111111;
+    color: #2D2658;
     border-color: #ffffff;
     transform: scale(1.02);
 }
@@ -271,11 +274,11 @@
    ======================================================== */
 #mainHeader.is-scrolled,
 #mainHeader.scrolled {
-    background-color: rgba(255, 255, 255, 0.94) !important;
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06) !important;
+    background-color: rgba(248, 246, 241, 0.96) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(45, 38, 88, 0.08) !important;
+    box-shadow: 0 8px 30px rgba(45, 38, 88, 0.05) !important;
 }
 
 #mainHeader.is-scrolled #navInner,
@@ -297,36 +300,36 @@
 
 #mainHeader.is-scrolled .nav-link,
 #mainHeader.scrolled .nav-link {
-    color: #111111 !important;
+    color: #252238 !important;
 }
 
 #mainHeader.is-scrolled .nav-link:hover,
 #mainHeader.scrolled .nav-link:hover {
-    color: #FF4D42 !important;
+    color: #FF5A68 !important;
 }
 
 #mainHeader.is-scrolled .nav-link.active-link::after,
 #mainHeader.scrolled .nav-link.active-link::after {
-    background-color: #111111 !important;
+    background-color: #2D2658 !important;
 }
 
 #mainHeader.is-scrolled .header-cta,
 #mainHeader.scrolled .header-cta {
-    color: #111111 !important;
-    border-color: rgba(0, 0, 0, 0.25) !important;
+    color: #252238 !important;
+    border-color: rgba(45, 38, 88, 0.25) !important;
     background-color: transparent !important;
 }
 
 #mainHeader.is-scrolled .header-cta:hover,
 #mainHeader.scrolled .header-cta:hover {
-    background-color: #111111 !important;
+    background-color: #2D2658 !important;
     color: #ffffff !important;
-    border-color: #111111 !important;
+    border-color: #2D2658 !important;
 }
 
 #mainHeader.is-scrolled #mobileMenuBtn,
 #mainHeader.scrolled #mobileMenuBtn {
-    color: #111111 !important;
+    color: #252238 !important;
 }
 
 #mainHeader.is-scrolled #topInfoStrip,
@@ -340,38 +343,55 @@
 }
 
 /* ========================================================
-   CARD & MEDIA STYLES
+   EDITORIAL CARDS & UI COMPONENTS
    ======================================================== */
+.editorial-card {
+    background-color: #ffffff;
+    border: 1px solid rgba(45, 38, 88, 0.08);
+    border-radius: 24px;
+    transition: transform 350ms var(--ease-premium), box-shadow 350ms var(--ease-premium), border-color 350ms var(--ease-premium);
+}
+
+.editorial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px -10px rgba(45, 38, 88, 0.08);
+    border-color: rgba(45, 38, 88, 0.16);
+}
+
+.editorial-icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #FADDE3;
+    color: #2D2658;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
 .cinema-card {
     transition: transform var(--duration-ui) var(--ease-premium), border-color var(--duration-ui) var(--ease-premium), box-shadow var(--duration-ui) var(--ease-premium);
 }
 
 .cinema-card:hover {
-    transform: translate3d(0, -5px, 0);
+    transform: translate3d(0, -4px, 0);
 }
 
 .cinema-card-img {
-    transition: transform 900ms var(--ease-soft);
+    transition: transform 750ms var(--ease-soft);
     will-change: transform;
 }
 
 .cinema-card:hover .cinema-card-img {
-    transform: scale(1.04);
-}
-
-.cinema-meta-shift {
-    transition: transform var(--duration-ui) var(--ease-premium), color var(--duration-ui) var(--ease-premium);
-}
-
-.cinema-card:hover .cinema-meta-shift {
-    transform: translate3d(5px, 0, 0);
+    transform: scale(1.025);
 }
 
 .glass-dark {
-    background: rgba(16, 18, 41, 0.85);
+    background: rgba(45, 38, 88, 0.8);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Client Logo Marquee */

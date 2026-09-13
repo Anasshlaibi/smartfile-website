@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth bg-[#080914]">
+<html lang="fr" class="scroll-smooth bg-[#F8F6F1]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,14 +57,16 @@
                 extend: {
                     colors: {
                         brand: {
-                            obsidian: '#080914',
-                            navy: '#101229',
-                            surface: '#171936',
-                            warmWhite: '#F7F6F3',
-                            coral: '#FF4D42',
-                            coralHover: '#E94239',
-                            lavender: '#B8BDE0',
-                            muted: '#8D91A8',
+                            primary: '#2D2658',
+                            secondary: '#40376F',
+                            coral: '#FF5A68',
+                            coralHover: '#E84554',
+                            pink: '#FADDE3',
+                            bg: '#F8F6F1',
+                            surface: '#F4F2F7',
+                            lavender: '#ECE9F3',
+                            text: '#252238',
+                            muted: '#726E8D',
                         }
                     },
                     fontFamily: {
@@ -79,20 +81,22 @@
     <!-- Rich Motion, Hero Entrance & Navbar Smooth Transition Styles -->
     <style>
         :root {
-            --brand-obsidian: #080914;
-            --brand-navy: #101229;
-            --brand-surface: #171936;
-            --brand-warm-white: #F7F6F3;
-            --brand-coral: #FF4D42;
-            --brand-coral-hover: #E94239;
-            --brand-lavender: #B8BDE0;
-            --brand-muted: #8D91A8;
+            --brand-primary: #2D2658;
+            --brand-secondary: #40376F;
+            --brand-coral: #FF5A68;
+            --brand-coral-hover: #E84554;
+            --brand-pink: #FADDE3;
+            --brand-bg: #F8F6F1;
+            --brand-surface: #F4F2F7;
+            --brand-lavender: #ECE9F3;
+            --brand-text: #252238;
+            --brand-muted: #726E8D;
             --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
         }
         body {
-            background-color: #080914;
-            color: #101229;
+            background-color: #F8F6F1;
+            color: #252238;
             font-family: 'Outfit', sans-serif;
             overflow-x: hidden;
             margin: 0;
@@ -103,10 +107,10 @@
             font-style: italic;
         }
         .glass-dark {
-            background: rgba(16, 18, 41, 0.85);
+            background: rgba(45, 38, 88, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         /* Hero Sequential Entrance Keyframes & Classes */
@@ -194,7 +198,7 @@
         }
         .reveal-left {
             opacity: 0;
-            transform: translate3d(-50px, 0, 0);
+            transform: translate3d(-36px, 0, 0);
             transition: opacity 0.85s var(--ease-premium), transform 0.85s var(--ease-premium);
             will-change: opacity, transform;
         }
@@ -204,7 +208,7 @@
         }
         .reveal-right {
             opacity: 0;
-            transform: translate3d(50px, 0, 0);
+            transform: translate3d(36px, 0, 0);
             transition: opacity 0.85s var(--ease-premium), transform 0.85s var(--ease-premium);
             will-change: opacity, transform;
         }
@@ -214,7 +218,7 @@
         }
         .reveal-scale-up {
             opacity: 0;
-            transform: scale(0.92) translate3d(0, 25px, 0);
+            transform: scale(0.96) translate3d(0, 20px, 0);
             transition: opacity 0.85s var(--ease-premium), transform 0.85s var(--ease-premium);
             will-change: opacity, transform;
         }
@@ -258,7 +262,7 @@
             transform: translateY(-50%) scale(0.97);
         }
         .nav-link {
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.9);
             position: relative;
             transition: color 400ms ease;
         }
@@ -269,7 +273,7 @@
             left: 0;
             width: 0%;
             height: 2px;
-            background-color: #FF4D42;
+            background-color: #FF5A68;
             transition: width 300ms var(--ease-premium);
         }
         .nav-link:hover {
@@ -290,7 +294,7 @@
         }
         .header-cta:hover {
             background-color: #ffffff;
-            color: #111111;
+            color: #2D2658;
             border-color: #ffffff;
             transform: scale(1.02);
         }
@@ -302,11 +306,11 @@
         /* Scrolled Navbar Theme */
         #mainHeader.is-scrolled,
         #mainHeader.scrolled {
-            background-color: rgba(255, 255, 255, 0.94) !important;
-            backdrop-filter: blur(14px) !important;
-            -webkit-backdrop-filter: blur(14px) !important;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06) !important;
+            background-color: rgba(248, 246, 241, 0.96) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border-bottom: 1px solid rgba(45, 38, 88, 0.08) !important;
+            box-shadow: 0 8px 30px rgba(45, 38, 88, 0.05) !important;
         }
         #mainHeader.is-scrolled #navInner,
         #mainHeader.scrolled #navInner {
@@ -324,31 +328,31 @@
         }
         #mainHeader.is-scrolled .nav-link,
         #mainHeader.scrolled .nav-link {
-            color: #111111 !important;
+            color: #252238 !important;
         }
         #mainHeader.is-scrolled .nav-link:hover,
         #mainHeader.scrolled .nav-link:hover {
-            color: #FF4D42 !important;
+            color: #FF5A68 !important;
         }
         #mainHeader.is-scrolled .nav-link.active-link::after,
         #mainHeader.scrolled .nav-link.active-link::after {
-            background-color: #111111 !important;
+            background-color: #2D2658 !important;
         }
         #mainHeader.is-scrolled .header-cta,
         #mainHeader.scrolled .header-cta {
-            color: #111111 !important;
-            border-color: rgba(0, 0, 0, 0.25) !important;
+            color: #252238 !important;
+            border-color: rgba(45, 38, 88, 0.25) !important;
             background-color: transparent !important;
         }
         #mainHeader.is-scrolled .header-cta:hover,
         #mainHeader.scrolled .header-cta:hover {
-            background-color: #111111 !important;
+            background-color: #2D2658 !important;
             color: #ffffff !important;
-            border-color: #111111 !important;
+            border-color: #2D2658 !important;
         }
         #mainHeader.is-scrolled #mobileMenuBtn,
         #mainHeader.scrolled #mobileMenuBtn {
-            color: #111111 !important;
+            color: #252238 !important;
         }
         #mainHeader.is-scrolled #topInfoStrip,
         #mainHeader.scrolled #topInfoStrip {
@@ -357,6 +361,30 @@
             opacity: 0 !important;
             overflow: hidden !important;
             border-bottom: none !important;
+        }
+
+        /* Editorial Card Utilities */
+        .editorial-card {
+            background-color: #ffffff;
+            border: 1px solid rgba(45, 38, 88, 0.08);
+            border-radius: 24px;
+            transition: transform 350ms var(--ease-premium), box-shadow 350ms var(--ease-premium), border-color 350ms var(--ease-premium);
+        }
+        .editorial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px -10px rgba(45, 38, 88, 0.08);
+            border-color: rgba(45, 38, 88, 0.16);
+        }
+        .editorial-icon-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: #FADDE3;
+            color: #2D2658;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
         }
 
         /* Reduced Motion */
@@ -389,7 +417,7 @@
         <script type="module" src="{{ asset('build/' . $jsFile) }}"></script>
     @endif
 </head>
-<body class="bg-[#080914] text-[#101229] antialiased selection:bg-[#FF4D42] selection:text-white">
+<body class="bg-[#F8F6F1] text-[#252238] antialiased selection:bg-[#FF5A68] selection:text-white">
 
     <!-- Shared Header -->
     @include('components.header')
@@ -403,11 +431,11 @@
     @include('components.footer')
 
     <!-- 4K Cinema Video Lightbox Modal -->
-    <div id="videoModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden flex items-center justify-center p-4 transition-opacity duration-300">
-        <div class="relative w-full max-w-5xl bg-[#080914] rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
-            <div class="flex justify-between items-center px-6 py-4 border-b border-white/10 bg-[#101229]">
+    <div id="videoModal" class="fixed inset-0 z-50 bg-[#2D2658]/95 backdrop-blur-xl hidden flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="relative w-full max-w-5xl bg-[#2D2658] rounded-3xl overflow-hidden border border-white/15 shadow-2xl">
+            <div class="flex justify-between items-center px-6 py-4 border-b border-white/10 bg-[#252238]">
                 <span id="modalVideoTitle" class="font-bold text-xs uppercase tracking-widest text-white/90 font-mono">SmartFilms Cinema Player</span>
-                <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FF4D42] text-white flex items-center justify-center text-xs transition-colors">
+                <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-[#FF5A68] text-white flex items-center justify-center text-xs transition-colors">
                     <i class="bi bi-x-lg"></i>
                 </button>
             </div>

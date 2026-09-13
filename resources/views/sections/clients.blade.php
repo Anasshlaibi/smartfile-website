@@ -1,17 +1,17 @@
-<!-- CHAPTER 02: SELECTED CLIENTS (#F7F6F3 WARM OFF-WHITE) -->
-<section id="clients" class="bg-[#F7F6F3] py-20 md:py-28 border-y border-slate-200/60 overflow-hidden">
+<!-- CHAPTER 02: SELECTED CLIENTS & TRUST (#F8F6F1 WARM OFF-WHITE) -->
+<section id="clients" class="bg-[#F8F6F1] py-16 md:py-24 border-b border-[#2D2658]/10 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Minimalist Section Header -->
-        <div class="text-center mb-12">
-            <span class="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#8D91A8] block">
+        <div class="text-center mb-10">
+            <span class="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#2D2658]/60 block">
                 ILS NOUS FONT CONFIANCE
             </span>
         </div>
 
-        <!-- Clean Monochrome Infinite Logo Track (No heavy cards, elegant opacity) -->
+        <!-- Clean Subtle Logo Containers in Smooth Infinite Track -->
         <div class="relative w-full overflow-hidden">
-            <div class="animate-marquee flex items-center gap-16 py-4">
+            <div class="animate-marquee flex items-center gap-6 sm:gap-8 py-2">
                 @php
                     $clientsList = [
                         ['name' => 'DELL Technologies', 'file' => 'logo_dell.jpg'],
@@ -28,8 +28,8 @@
 
                 @for($i = 0; $i < 3; $i++)
                     @foreach($clientsList as $client)
-                        <div class="h-14 w-40 shrink-0 flex items-center justify-center grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300 cursor-pointer">
-                            <img src="/uploads/{{ $client['file'] }}" alt="{{ $client['name'] }}" class="max-h-10 max-w-full object-contain">
+                        <div class="h-16 w-44 shrink-0 bg-white rounded-2xl border border-[#2D2658]/10 flex items-center justify-center p-3.5 shadow-sm hover:shadow-md hover:border-[#FF5A68]/40 transition-all duration-300 group cursor-pointer">
+                            <img src="/uploads/{{ $client['file'] }}" alt="{{ $client['name'] }}" class="max-h-9 max-w-full object-contain grayscale opacity-65 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">
                         </div>
                     @endforeach
                 @endfor

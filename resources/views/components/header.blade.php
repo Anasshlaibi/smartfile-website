@@ -2,16 +2,16 @@
 <header id="mainHeader" class="fixed top-0 left-0 w-full z-50">
     
     <!-- Top Contact Bar (Dark Luxury, smoothly collapses on scroll) -->
-    <div id="topInfoStrip" class="bg-black/40 backdrop-blur-md text-white/80 text-[11px] py-2 px-6 border-b border-white/10 hidden md:block max-h-12 overflow-hidden">
+    <div id="topInfoStrip" class="bg-[#2D2658]/80 backdrop-blur-md text-white/90 text-[11px] py-2 px-6 border-b border-white/10 hidden md:block max-h-12 overflow-hidden">
         <div class="max-w-[96rem] mx-auto flex justify-between items-center tracking-wider font-mono">
             <div class="flex items-center gap-6">
-                <span class="flex items-center gap-2"><i class="bi bi-geo-alt text-[#FF4D42]"></i> Casablanca &bull; 130 Bv d'Anfa</span>
-                <span class="flex items-center gap-2 text-white/60"><i class="bi bi-camera-reels text-[#FF4D42]"></i> Studio Cinéma 8K & Drone FPV</span>
+                <span class="flex items-center gap-2"><i class="bi bi-geo-alt text-[#FF5A68]"></i> Casablanca &bull; 130 Bv d'Anfa</span>
+                <span class="flex items-center gap-2 text-[#FADDE3]"><i class="bi bi-camera-reels text-[#FF5A68]"></i> Studio Cinéma 8K & Drone FPV</span>
             </div>
             <div class="flex items-center gap-6">
-                <a href="tel:{{ str_replace(' ', '', $settings['phone'] ?? '+212617202345') }}" class="hover:text-white transition-colors flex items-center gap-1.5 font-bold text-white"><i class="bi bi-telephone text-[#FF4D42]"></i> {{ $settings['phone'] ?? '+212 6 17 20 23 45' }}</a>
+                <a href="tel:{{ str_replace(' ', '', $settings['phone'] ?? '+212617202345') }}" class="hover:text-[#FADDE3] transition-colors flex items-center gap-1.5 font-bold text-white"><i class="bi bi-telephone text-[#FF5A68]"></i> {{ $settings['phone'] ?? '+212 6 17 20 23 45' }}</a>
                 <span class="text-white/30">|</span>
-                <a href="mailto:{{ $settings['email'] ?? 'contact@smartfilmsprod.com' }}" class="hover:text-white transition-colors">{{ $settings['email'] ?? 'contact@smartfilmsprod.com' }}</a>
+                <a href="mailto:{{ $settings['email'] ?? 'contact@smartfilmsprod.com' }}" class="hover:text-[#FADDE3] transition-colors">{{ $settings['email'] ?? 'contact@smartfilmsprod.com' }}</a>
             </div>
         </div>
     </div>
@@ -54,15 +54,15 @@
     </div>
 
     <!-- Mobile Drawer -->
-    <div id="mobileMenu" class="hidden lg:hidden bg-[#080914] text-white border-t border-white/10 shadow-2xl px-6 py-6 space-y-4">
-        <a href="{{ route('home') }}" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-white hover:text-[#FF4D42] py-2 border-b border-white/10">Accueil</a>
-        <a href="{{ route('home') }}#manifesto" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-white hover:text-[#FF4D42] py-2 border-b border-white/10">Notre agence</a>
-        <a href="{{ route('home') }}#expertises" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-white hover:text-[#FF4D42] py-2 border-b border-white/10">Nos expertises</a>
-        <a href="{{ route('home') }}#films" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-white hover:text-[#FF4D42] py-2 border-b border-white/10">Nos réalisations</a>
-        <a href="{{ route('home') }}#estimateur" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-white hover:text-[#FF4D42] py-2 border-b border-white/10">Estimer un projet</a>
-        <a href="{{ route('contact') }}" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-white hover:text-[#FF4D42] py-2 border-b border-white/10">Contact</a>
+    <div id="mobileMenu" class="hidden lg:hidden bg-[#2D2658] text-white border-t border-white/10 shadow-2xl px-6 py-6 space-y-4">
+        <a href="{{ route('home') }}" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-white hover:text-[#FF5A68] py-2 border-b border-white/10">Accueil</a>
+        <a href="{{ route('home') }}#manifesto" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-white hover:text-[#FF5A68] py-2 border-b border-white/10">Notre agence</a>
+        <a href="{{ route('home') }}#expertises" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-white hover:text-[#FF5A68] py-2 border-b border-white/10">Nos expertises</a>
+        <a href="{{ route('home') }}#films" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-white hover:text-[#FF5A68] py-2 border-b border-white/10">Nos réalisations</a>
+        <a href="{{ route('home') }}#estimateur" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-white hover:text-[#FF5A68] py-2 border-b border-white/10">Estimer un projet</a>
+        <a href="{{ route('contact') }}" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-sm font-bold uppercase tracking-wider text-white hover:text-[#FF5A68] py-2 border-b border-white/10">Contact</a>
         <div class="pt-4">
-            <a href="{{ route('contact') }}" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-center border border-white/40 text-white hover:bg-white hover:text-black py-3 rounded-full text-xs font-semibold uppercase tracking-wider transition-all">
+            <a href="{{ route('contact') }}" onclick="document.getElementById('mobileMenu').classList.add('hidden')" class="block text-center border border-white/40 text-white hover:bg-white hover:text-[#2D2658] py-3 rounded-full text-xs font-semibold uppercase tracking-wider transition-all">
                 Nous contacter &rarr;
             </a>
         </div>
