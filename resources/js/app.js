@@ -1,113 +1,122 @@
 import './bootstrap';
 
 /**
- * SmartFilms Prod — Premium Cinematic Motion & Analytics Engine
+ * SmartFilms Prod — Awwwards-Tier Motion & Scroll Animation Engine
  */
 document.addEventListener('DOMContentLoaded', () => {
     const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // =========================================================================
-    // 1. HERO SEQUENCED LAYERED REVEAL (Exact Timings: 0ms -> 200ms -> 350ms -> 450ms -> 650ms -> 800ms -> 950ms -> 1200ms)
+    // 1. HERO SEQUENTIAL LAYERED CINEMATIC ENTRANCE
     // =========================================================================
     const initHeroAnimation = () => {
-        const revealImmediately = () => {
-            document.querySelectorAll('.hero-eyebrow-target, .hero-h1-line1, .hero-h1-line2, .hero-serif-accent, .hero-copy, .hero-cta-target, .hero-scroll-target, .reveal-line, .reveal-fade-up, .reveal-scale-up').forEach(el => {
-                el.classList.add('revealed');
-                el.style.opacity = '1';
-                el.style.transform = 'none';
-            });
-        };
+        const eyebrow = document.querySelector('.hero-eyebrow');
+        const serif = document.querySelector('.hero-serif');
+        const line1 = document.querySelector('.hero-title-line1');
+        const line2 = document.querySelector('.hero-title-line2');
+        const desc = document.querySelector('.hero-desc');
+        const cta = document.querySelector('.hero-cta');
 
         if (isReducedMotion) {
-            revealImmediately();
+            [eyebrow, serif, line1, line2, desc, cta].forEach(el => {
+                if (el) el.classList.add('revealed');
+            });
+            document.querySelectorAll('.reveal-line, .reveal-fade-up, .reveal-left, .reveal-right, .reveal-scale-up').forEach(el => {
+                el.classList.add('revealed');
+            });
             return;
         }
 
-        // 0ms: Hero video/poster visible by default
-
-        // 200ms: Eyebrow & Badges appear
+        // 150ms: Eyebrow / Tag
         setTimeout(() => {
-            document.querySelectorAll('.hero-eyebrow-target').forEach(el => {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            });
-        }, 200);
+            if (eyebrow) eyebrow.classList.add('revealed');
+        }, 150);
 
-        // 350ms: Headline line 1 reveals (L'IMPACT)
+        // 250ms: "agence de" (Serif Italic)
         setTimeout(() => {
-            const line1 = document.querySelector('.hero-h1-line1');
+            if (serif) serif.classList.add('revealed');
+        }, 250);
+
+        // 350ms: "PRODUCTION"
+        setTimeout(() => {
             if (line1) line1.classList.add('revealed');
         }, 350);
 
-        // 450ms: Headline line 2 reveals (CINÉMATOGRAPHIQUE)
+        // 450ms: "AUDIOVISUELLE"
         setTimeout(() => {
-            const line2 = document.querySelector('.hero-h1-line2');
             if (line2) line2.classList.add('revealed');
         }, 450);
 
-        // 650ms: Serif accent reveals (au service des grandes marques)
+        // 700ms: Supporting description
         setTimeout(() => {
-            const serifAccent = document.querySelector('.hero-serif-accent');
-            if (serifAccent) serifAccent.classList.add('revealed');
-        }, 650);
+            if (desc) desc.classList.add('revealed');
+        }, 700);
 
-        // 800ms: Supporting copy fades in
+        // 850ms: Primary CTA button
         setTimeout(() => {
-            const heroCopy = document.querySelector('.hero-copy');
-            if (heroCopy) heroCopy.classList.add('revealed');
-        }, 800);
-
-        // 950ms: CTA enters
-        setTimeout(() => {
-            const cta = document.querySelector('.hero-cta-target');
-            if (cta) {
-                cta.style.opacity = '1';
-                cta.style.transform = 'translateY(0)';
-            }
-        }, 950);
-
-        // 1200ms: Scroll indicator appears
-        setTimeout(() => {
-            const scrollIndicator = document.querySelector('.hero-scroll-target');
-            if (scrollIndicator) {
-                scrollIndicator.style.opacity = '1';
-                scrollIndicator.style.transform = 'translateY(0)';
-            }
-        }, 1200);
+            if (cta) cta.classList.add('revealed');
+        }, 850);
     };
 
     initHeroAnimation();
 
     // =========================================================================
-    // 2. INTERSECTION OBSERVER FOR SECTION REVEALS (HEADINGS, LINES, CARDS)
+    // 2. NAVBAR SCROLL PROGRESSIVE TRANSITION (Threshold ~60px)
     // =========================================================================
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -10% 0px',
-        threshold: 0.12
-    };
+    const headerEl = document.getElementById('mainHeader');
+    if (headerEl) {
+        let isScrolled = false;
+        const handleScroll = () => {
+            const shouldScroll = window.scrollY > 60;
+            if (shouldScroll !== isScrolled) {
+                isScrolled = shouldScroll;
+                if (isScrolled) {
+                    headerEl.classList.add('is-scrolled', 'scrolled');
+                } else {
+                    headerEl.classList.remove('is-scrolled', 'scrolled');
+                }
+            }
+        };
 
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                observer.unobserve(entry.target);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // Initial check on load/refresh
+    }
+
+    // =========================================================================
+    // 3. INTERSECTION OBSERVER FOR SECTION REVEALS
+    // =========================================================================
+    const revealElements = document.querySelectorAll('.reveal-line, .reveal-fade-up, .reveal-left, .reveal-right, .reveal-scale-up');
+    
+    if ('IntersectionObserver' in window && !isReducedMotion) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -40px 0px',
+            threshold: 0.1
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 50 && rect.bottom > 0) {
+                el.classList.add('revealed');
+            } else {
+                revealObserver.observe(el);
             }
         });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal-line, .reveal-fade-up, .reveal-left, .reveal-right, .reveal-scale-up').forEach(el => {
-        if (isReducedMotion) {
-            el.classList.add('revealed');
-            el.style.opacity = '1';
-            el.style.transform = 'none';
-        } else {
-            revealObserver.observe(el);
-        }
-    });
+    } else {
+        revealElements.forEach(el => el.classList.add('revealed'));
+    }
 
     // =========================================================================
-    // 3. ANALYTICS EVENT TRACKING HELPER
+    // 4. ANALYTICS EVENT TRACKING HELPER
     // =========================================================================
     window.trackEvent = (eventName, params = {}) => {
         try {
@@ -117,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.dataLayer && Array.isArray(window.dataLayer)) {
                 window.dataLayer.push({ event: eventName, ...params });
             }
-            // console.log(`[SmartFilms Analytics] ${eventName}:`, params);
         } catch (e) {
             // silent catch
         }

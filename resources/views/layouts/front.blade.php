@@ -22,7 +22,7 @@
       "@context": "https://schema.org",
       "@type": ["LocalBusiness", "ProfessionalService"],
       "name": "SmartFilms Prod",
-      "image": "{{ asset('uploads/smartfilms_logo.png') }}",
+      "image": "{{ asset('uploads/smartfilms_logo_white.png') }}",
       "telephone": "{{ $settings['phone'] ?? '+212 6 17 20 23 45' }}",
       "email": "{{ $settings['email'] ?? 'contact@smartfilmsprod.com' }}",
       "url": "{{ url('/') }}",
@@ -76,7 +76,7 @@
         }
     </script>
 
-    <!-- Rich Motion & Scroll Animation Styles -->
+    <!-- Rich Motion, Hero Entrance & Navbar Smooth Transition Styles -->
     <style>
         :root {
             --brand-obsidian: #080914;
@@ -87,7 +87,7 @@
             --brand-coral-hover: #E94239;
             --brand-lavender: #B8BDE0;
             --brand-muted: #8D91A8;
-            --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
         }
         body {
@@ -98,13 +98,6 @@
             margin: 0;
             padding: 0;
         }
-        .smartfilms-logo {
-            height: 44px !important;
-            max-height: 44px !important;
-            width: auto !important;
-            object-fit: contain !important;
-            display: inline-block !important;
-        }
         .font-serif-italic {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
@@ -114,6 +107,64 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Sequential Entrance Keyframes & Classes */
+        .hero-eyebrow {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 800ms var(--ease-premium), transform 800ms var(--ease-premium);
+            will-change: opacity, transform;
+        }
+        .hero-eyebrow.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .hero-serif {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 850ms var(--ease-premium), transform 850ms var(--ease-premium);
+            will-change: opacity, transform;
+        }
+        .hero-serif.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .hero-title-line1,
+        .hero-title-line2 {
+            transform: translate3d(0, 105%, 0);
+            opacity: 0;
+            transition: transform 900ms var(--ease-premium), opacity 900ms var(--ease-premium);
+            will-change: transform, opacity;
+        }
+        .hero-title-line1.revealed,
+        .hero-title-line2.revealed {
+            transform: translate3d(0, 0, 0) !important;
+            opacity: 1 !important;
+        }
+
+        .hero-desc {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 850ms var(--ease-premium), transform 850ms var(--ease-premium);
+            will-change: opacity, transform;
+        }
+        .hero-desc.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .hero-cta {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 850ms var(--ease-premium), transform 850ms var(--ease-premium), background-color 300ms ease, box-shadow 300ms ease;
+            will-change: opacity, transform;
+        }
+        .hero-cta.revealed {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
 
         /* Scroll Animations */
@@ -128,8 +179,8 @@
             will-change: transform, opacity;
         }
         .reveal-line.revealed {
-            transform: translate3d(0, 0, 0);
-            opacity: 1;
+            transform: translate3d(0, 0, 0) !important;
+            opacity: 1 !important;
         }
         .reveal-fade-up {
             opacity: 0;
@@ -138,8 +189,8 @@
             will-change: opacity, transform;
         }
         .reveal-fade-up.revealed {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
+            opacity: 1 !important;
+            transform: translate3d(0, 0, 0) !important;
         }
         .reveal-left {
             opacity: 0;
@@ -148,8 +199,8 @@
             will-change: opacity, transform;
         }
         .reveal-left.revealed {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
+            opacity: 1 !important;
+            transform: translate3d(0, 0, 0) !important;
         }
         .reveal-right {
             opacity: 0;
@@ -158,8 +209,8 @@
             will-change: opacity, transform;
         }
         .reveal-right.revealed {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
+            opacity: 1 !important;
+            transform: translate3d(0, 0, 0) !important;
         }
         .reveal-scale-up {
             opacity: 0;
@@ -168,69 +219,159 @@
             will-change: opacity, transform;
         }
         .reveal-scale-up.revealed {
+            opacity: 1 !important;
+            transform: scale(1) translate3d(0, 0, 0) !important;
+        }
+
+        /* Navbar & Two-Logo Crossfade */
+        #mainHeader {
+            background-color: transparent;
+            border-bottom: 1px solid transparent;
+            box-shadow: none;
+            transition:
+                background-color 500ms var(--ease-premium),
+                color 400ms ease,
+                box-shadow 500ms ease,
+                border-color 500ms ease,
+                padding 450ms var(--ease-premium);
+        }
+        #navInner {
+            height: 80px;
+            transition: height 450ms var(--ease-premium);
+        }
+        .logo-white,
+        .logo-black {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%) scale(1);
+            transition:
+                opacity 400ms var(--ease-premium),
+                transform 500ms var(--ease-premium);
+            pointer-events: none;
+        }
+        .logo-white {
             opacity: 1;
-            transform: scale(1) translate3d(0, 0, 0);
         }
-
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-        .delay-500 { transition-delay: 500ms; }
-
-        .cinema-card {
-            transition: transform 0.35s var(--ease-premium), border-color 0.35s var(--ease-premium), box-shadow 0.35s var(--ease-premium);
-        }
-        .cinema-card:hover {
-            transform: translate3d(0, -6px, 0);
-        }
-        .cinema-card-img {
-            transition: transform 0.9s var(--ease-soft);
-            will-change: transform;
-        }
-        .cinema-card:hover .cinema-card-img {
-            transform: scale(1.04);
-        }
-        .cinema-meta-shift {
-            transition: transform 0.35s var(--ease-premium), color 0.35s var(--ease-premium);
-        }
-        .cinema-card:hover .cinema-meta-shift {
-            transform: translate3d(5px, 0, 0);
-        }
-
-        #mainHeader.scrolled {
-            background-color: rgba(255, 255, 255, 0.98) !important;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(16, 18, 41, 0.08);
-            box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.08);
-        }
-        #mainHeader.scrolled .nav-link {
-            color: #101229 !important;
-        }
-        #mainHeader.scrolled #mobileMenuBtn {
-            color: #101229 !important;
-        }
-        #mainHeader.scrolled #topInfoStrip {
-            max-height: 0;
-            padding: 0;
+        .logo-black {
             opacity: 0;
-            overflow: hidden;
-            border-bottom: none;
+            transform: translateY(-50%) scale(0.97);
+        }
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85);
+            position: relative;
+            transition: color 400ms ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: #FF4D42;
+            transition: width 300ms var(--ease-premium);
+        }
+        .nav-link:hover {
+            color: #ffffff;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active-link::after {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        .header-cta {
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background-color: transparent;
+            transition: color 400ms ease, border-color 400ms ease, background-color 400ms ease, transform 300ms ease;
+        }
+        .header-cta:hover {
+            background-color: #ffffff;
+            color: #111111;
+            border-color: #ffffff;
+            transform: scale(1.02);
+        }
+        #mobileMenuBtn {
+            color: #ffffff;
+            transition: color 400ms ease;
         }
 
-        @keyframes marquee {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
+        /* Scrolled Navbar Theme */
+        #mainHeader.is-scrolled,
+        #mainHeader.scrolled {
+            background-color: rgba(255, 255, 255, 0.94) !important;
+            backdrop-filter: blur(14px) !important;
+            -webkit-backdrop-filter: blur(14px) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06) !important;
         }
-        .animate-marquee {
-            display: flex;
-            width: max-content;
-            animation: marquee 35s linear infinite;
-            will-change: transform;
+        #mainHeader.is-scrolled #navInner,
+        #mainHeader.scrolled #navInner {
+            height: 68px !important;
         }
-        .animate-marquee:hover {
-            animation-play-state: paused;
+        #mainHeader.is-scrolled .logo-white,
+        #mainHeader.scrolled .logo-white {
+            opacity: 0 !important;
+            transform: translateY(-50%) scale(0.97) !important;
+        }
+        #mainHeader.is-scrolled .logo-black,
+        #mainHeader.scrolled .logo-black {
+            opacity: 1 !important;
+            transform: translateY(-50%) scale(1) !important;
+        }
+        #mainHeader.is-scrolled .nav-link,
+        #mainHeader.scrolled .nav-link {
+            color: #111111 !important;
+        }
+        #mainHeader.is-scrolled .nav-link:hover,
+        #mainHeader.scrolled .nav-link:hover {
+            color: #FF4D42 !important;
+        }
+        #mainHeader.is-scrolled .nav-link.active-link::after,
+        #mainHeader.scrolled .nav-link.active-link::after {
+            background-color: #111111 !important;
+        }
+        #mainHeader.is-scrolled .header-cta,
+        #mainHeader.scrolled .header-cta {
+            color: #111111 !important;
+            border-color: rgba(0, 0, 0, 0.25) !important;
+            background-color: transparent !important;
+        }
+        #mainHeader.is-scrolled .header-cta:hover,
+        #mainHeader.scrolled .header-cta:hover {
+            background-color: #111111 !important;
+            color: #ffffff !important;
+            border-color: #111111 !important;
+        }
+        #mainHeader.is-scrolled #mobileMenuBtn,
+        #mainHeader.scrolled #mobileMenuBtn {
+            color: #111111 !important;
+        }
+        #mainHeader.is-scrolled #topInfoStrip,
+        #mainHeader.scrolled #topInfoStrip {
+            max-height: 0 !important;
+            padding: 0 !important;
+            opacity: 0 !important;
+            overflow: hidden !important;
+            border-bottom: none !important;
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .hero-eyebrow, .hero-serif, .hero-title-line1, .hero-title-line2, .hero-desc, .hero-cta,
+            .reveal-line, .reveal-fade-up, .reveal-left, .reveal-right, .reveal-scale-up {
+                transform: none !important;
+                opacity: 1 !important;
+            }
         }
     </style>
 
@@ -289,56 +430,22 @@
     <!-- Core Motion, Scroll Animation & Interactive Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Sticky Luxury White Header on Scroll
+            // Smooth Scroll Navbar Transition
             const headerEl = document.getElementById('mainHeader');
             if (headerEl) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 40) {
-                        headerEl.classList.add('scrolled');
+                const onScroll = () => {
+                    if (window.scrollY > 60) {
+                        headerEl.classList.add('is-scrolled', 'scrolled');
                     } else {
-                        headerEl.classList.remove('scrolled');
+                        headerEl.classList.remove('is-scrolled', 'scrolled');
                     }
-                }, { passive: true });
-
-                if (window.scrollY > 40) {
-                    headerEl.classList.add('scrolled');
-                }
+                };
+                window.addEventListener('scroll', onScroll, { passive: true });
+                onScroll();
             }
-
-            // 2. Global IntersectionObserver Scroll Animation System
-            const revealElements = document.querySelectorAll('.reveal-line, .reveal-fade-up, .reveal-left, .reveal-right, .reveal-scale-up');
-            
-            if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('revealed');
-                            obs.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    root: null,
-                    threshold: 0.12,
-                    rootMargin: '0px 0px -50px 0px'
-                });
-
-                revealElements.forEach(el => observer.observe(el));
-            } else {
-                revealElements.forEach(el => el.classList.add('revealed'));
-            }
-
-            // Fallback trigger for elements already in viewport
-            setTimeout(() => {
-                revealElements.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    if (rect.top < window.innerHeight) {
-                        el.classList.add('revealed');
-                    }
-                });
-            }, 100);
         });
 
-        // 3. Video Modal Lightbox
+        // Video Modal Lightbox
         function openVideoModal(url, title) {
             const modal = document.getElementById('videoModal');
             const iframe = document.getElementById('modalIframe');
@@ -346,13 +453,13 @@
             if (modal && iframe) {
                 titleEl.innerText = title || 'SmartFilms Cinema Player';
                 let embedUrl = url;
-                if (url.includes('youtube.com/watch?v=')) {
+                if (url && url.includes('youtube.com/watch?v=')) {
                     embedUrl = url.replace('watch?v=', 'embed/');
                 }
-                if (!embedUrl.includes('autoplay=1')) {
+                if (embedUrl && !embedUrl.includes('autoplay=1')) {
                     embedUrl += (embedUrl.includes('?') ? '&' : '?') + 'autoplay=1';
                 }
-                iframe.src = embedUrl;
+                iframe.src = embedUrl || '';
                 modal.classList.remove('hidden');
             }
         }

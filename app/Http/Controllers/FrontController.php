@@ -138,6 +138,144 @@ class FrontController extends Controller
         } else {
             // 2. Fallback to clean configuration array
             $expertisesList = [
+                'strategie-conception' => [
+                    'title' => 'Stratégie & Conception',
+                    'subtitle' => 'Donner du sens à chaque projet',
+                    'meta_title' => 'Stratégie de Contenu & Conception Audiovisuelle | SmartFilms Maroc',
+                    'meta_description' => 'Conception de stratégies de contenu percutantes et lignes éditoriales adaptées à vos objectifs et à votre audience à Casablanca et au Maroc.',
+                    'h1' => 'STRATÉGIE & CONCEPTION CRÉATIVE',
+                    'hero_desc' => 'Nous imaginons des concepts créatifs, des stratégies de contenu et des lignes éditoriales calibrées pour marquer les esprits et atteindre vos cibles.',
+                    'image' => '/uploads/expertise_01_strategy.jpg',
+                    'deliverables' => [
+                        'Lignes éditoriales et chartes audiovisuelles',
+                        'Storyboards détaillés et moodboards créatifs',
+                        'Scénarisation et rédaction des voix-off',
+                        'Plan de diffusion multi-canaux'
+                    ],
+                    'equipment' => ['Direction artistique dédiée', 'Scénaristes & Concepteurs rédacteurs', 'Ateliers de co-création stratégique'],
+                    'category_filter' => 'Film de Marque',
+                    'faq' => [
+                        [
+                            'q' => 'Comment démarre la phase de conception ?',
+                            'a' => 'Nous débutons par un brief approfondi pour comprendre vos objectifs, vos personas et vos messages clés, puis nous élaborons 2 à 3 pistes créatives.'
+                        ]
+                    ]
+                ],
+                'production-audiovisuelle' => [
+                    'title' => 'Production Audiovisuelle',
+                    'subtitle' => 'Transformer une idée en image',
+                    'meta_title' => 'Production Audiovisuelle Cinématographique | SmartFilms Maroc',
+                    'meta_description' => 'Films institutionnels, publicités, interviews, capsules et prises de vues cinéma au Maroc.',
+                    'h1' => 'PRODUCTION AUDIOVISUELLE HAUTE FIDÉLITÉ',
+                    'hero_desc' => 'Films institutionnels, publicités, interviews, capsules, photographie, drone, multi-caméra... Nous produisons des contenus cinématographiques et authentiques.',
+                    'image' => '/uploads/expertise_02_production.jpg',
+                    'deliverables' => [
+                        'Films institutionnels master 4K',
+                        'Captations multi-caméras cinéma',
+                        'Interviews dirigeants & portraits collaborateurs',
+                        'Banque de plans B-Roll 4K/6K'
+                    ],
+                    'equipment' => ['Caméras Cinéma Arri / RED / Sony FX', 'Optiques Anamorphiques & Cinéma', 'Éclairages studio professionnels ARRI / Aputure'],
+                    'category_filter' => 'Film de Marque',
+                    'faq' => [
+                        [
+                            'q' => 'Quels équipements utilisez-vous en tournage ?',
+                            'a' => 'Nous tournons exclusivement avec des configurations cinéma certifiées (capteurs grand format, optiques de cinéma et machinerie stabilisée).'
+                        ]
+                    ]
+                ],
+                'contenus-sociaux' => [
+                    'title' => 'Contenus Sociaux',
+                    'subtitle' => 'Créer du contenu qui mérite d\'être regardé',
+                    'meta_title' => 'Production de Contenus Sociaux & Reels 9:16 | SmartFilms Maroc',
+                    'meta_description' => 'Reels, vidéos verticales, contenus éditoriaux, shootings photo et séries de contenus adaptées aux codes des réseaux sociaux.',
+                    'h1' => 'CONTENUS SOCIAUX & SNACK CONTENT',
+                    'hero_desc' => 'Reels, vidéos verticales, contenus éditoriaux, shootings photo et séries de contenus : nous adaptons vos messages aux codes des réseaux sociaux et aux usages de vos audiences.',
+                    'image' => '/uploads/expertise_03_social.jpg',
+                    'deliverables' => [
+                        'Packs de Reels & TikToks verticaux 9:16',
+                        'Formats courts snack content pour LinkedIn & Instagram',
+                        'Shooting photo éditorial et corporate',
+                        'Micro-animations et motion design'
+                    ],
+                    'equipment' => ['Configurations agiles de tournage vertical', 'Éclairage mobile LED haute fidélité', 'Montage express optimisé pour les algorithmes'],
+                    'category_filter' => 'Publicité TV',
+                    'faq' => [
+                        [
+                            'q' => 'Quel est le délai moyen pour produire des Reels sociaux ?',
+                            'a' => 'Pour les séries de contenus sociaux, nous pouvons livrer des lots complets en quelques jours ouvrés après le tournage.'
+                        ]
+                    ]
+                ],
+                'communication-corporate' => [
+                    'title' => 'Communication Corporate',
+                    'subtitle' => 'Faire rayonner ce qui fait votre entreprise',
+                    'meta_title' => 'Communication Corporate & Institutionnelle | SmartFilms Maroc',
+                    'meta_description' => 'Valorisation de vos équipes, vos savoir-faire et vos engagements à travers des contenus qui renforcent votre image et votre crédibilité.',
+                    'h1' => 'COMMUNICATION CORPORATE & LEADERSHIP',
+                    'hero_desc' => 'Nous valorisons vos équipes, vos savoir-faire et vos engagements à travers des contenus qui renforcent votre image et votre crédibilité.',
+                    'image' => '/uploads/cinema_corporate_film.png',
+                    'deliverables' => [
+                        'Films de marque institutionnels',
+                        'Vidéos RSE et rapports annuels vidéo',
+                        'Portraits de collaborateurs & marque employeur',
+                        'Vidéos de communication interne et externe'
+                    ],
+                    'equipment' => ['Caméras Cinéma 4K/6K', 'Optiques Cinéma Anamorphiques & Sphériques', 'Prises de vues aériennes drone 4K'],
+                    'category_filter' => 'Film Corporate',
+                    'faq' => [
+                        [
+                            'q' => 'Intervenez-vous dans les sites industriels partout au Maroc ?',
+                            'a' => 'Oui, nous disposons des protocoles de sécurité EPI et des autorisations pour intervenir sur des sites miniers, industriels et logistiques.'
+                        ]
+                    ]
+                ],
+                'publicite-campagnes' => [
+                    'title' => 'Publicité & Campagnes',
+                    'subtitle' => 'Donner de l\'impact aux messages',
+                    'meta_title' => 'Publicité & Campagnes de Marque | SmartFilms Maroc',
+                    'meta_description' => 'Des idées fortes, des directions créatives audacieuses et des formats adaptés à chaque canal de diffusion.',
+                    'h1' => 'PUBLICITÉS & CAMPAGNES DE MARQUE',
+                    'hero_desc' => 'Une idée forte, une direction créative, des formats adaptés à chaque canal : nous développons des campagnes qui marquent les esprits et génèrent de la valeur.',
+                    'image' => '/uploads/studio_commercial_spot.png',
+                    'deliverables' => [
+                        'Spots TV & Cinéma 4K (15s, 30s, 60s)',
+                        'Déclinaisons digitales YouTube & Social Ads',
+                        'Sound design et composition musicale originale',
+                        'Voice-over multilingue Darija, Français, Anglais'
+                    ],
+                    'equipment' => ['Caméras Slow-Motion haute vitesse', 'Machinerie travelling & Stabilisation', 'Mixage et étalonnage HDR broadcast'],
+                    'category_filter' => 'Publicité TV',
+                    'faq' => [
+                        [
+                            'q' => 'Pouvez-vous gérer le casting et les repérages ?',
+                            'a' => 'Oui, nous gérons l\'intégralité de la pré-production : repérages, casting acteurs, stylisme et décors.'
+                        ]
+                    ]
+                ],
+                'evenement-live' => [
+                    'title' => 'Événement & Live',
+                    'subtitle' => 'Capturer l\'instant. Le faire vivre. Le prolonger.',
+                    'meta_title' => 'Captation Événementielle & Diffusion Live | SmartFilms Maroc',
+                    'meta_description' => 'Photo & vidéo événementielle, aftermovies, captation multi-caméra, livestream, écran géant et régie.',
+                    'h1' => 'ÉVÉNEMENTIEL, AFTERMOVIES & LIVESTREAM',
+                    'hero_desc' => 'Photo & vidéo événementielle, aftermovies, captation multi-caméra, livestream, écran géant, régie et sonorisation : nous donnons une nouvelle dimension à vos événements.',
+                    'image' => '/uploads/cinema_corporate_film.png',
+                    'deliverables' => [
+                        'Aftermovie officiel dynamique 4K',
+                        'Teaser Same-Day Edit livré le jour même',
+                        'Captation intégrale des keynotes & tables rondes',
+                        'Diffusion en direct live streaming multi-plateformes'
+                    ],
+                    'equipment' => ['Régie vidéo broadcast 4K', 'Systèmes de transmission HF sans fil longue portée', 'Prise de son HF Sennheiser'],
+                    'category_filter' => 'Événementiel',
+                    'faq' => [
+                        [
+                            'q' => 'Pouvez-vous diffuser en streaming direct sur LinkedIn et YouTube ?',
+                            'a' => 'Oui, notre régie mobile permet la diffusion simultanée multi-plateformes en 1080p/4K avec liaisons 4G/5G sécurisées.'
+                        ]
+                    ]
+                ],
                 'film-corporate' => [
                     'title' => 'Film Corporate & Institutionnel',
                     'subtitle' => 'Maison de Production Audiovisuelle Casablanca',
@@ -158,14 +296,6 @@ class FrontController extends Controller
                         [
                             'q' => 'Combien de temps faut-il pour produire un film corporate ?',
                             'a' => 'En moyenne, une production corporate complète nécessite entre 2 à 4 semaines, incluant l\'écriture du scénario, le tournage (1 à 3 jours) et la post-production (montage, étalonnage, sound design).'
-                        ],
-                        [
-                            'q' => 'SmartFilms intervient-il partout au Maroc ?',
-                            'a' => 'Oui. Bien que notre studio soit basé à Casablanca (Bd d\'Anfa), nos équipes régie et caméras tournent régulièrement à Rabat, Tanger, Marrakech, Agadir et sur des sites industriels dans tout le Royaume.'
-                        ],
-                        [
-                            'q' => 'Accompagnez-vous les démarches d\'autorisations de tournage au Maroc ?',
-                            'a' => 'Absolument. Nous accompagnons nos clients dans l\'obtention et la coordination des autorisations administratives nécessaires auprès des autorités compétentes pour sécuriser chaque tournage.'
                         ]
                     ]
                 ],
@@ -189,10 +319,6 @@ class FrontController extends Controller
                         [
                             'q' => 'Comment se déroule la conception d\'un spot publicitaire ?',
                             'a' => 'Nous commençons par l\'élaboration du concept créatif et du storyboard, suivi du casting, du stylisme et du repérage des décors. Après validation, nous orchestrons le tournage et la post-production complète.'
-                        ],
-                        [
-                            'q' => 'Pouvez-vous adapter le spot pour TikTok et Instagram Reels ?',
-                            'a' => 'Oui. Dès la phase de cadrage, nous anticipons les cadrages 9:16 et 1:1 pour livrer des déclinaisons natives parfaitement adaptées aux algorithmes des réseaux sociaux.'
                         ]
                     ]
                 ],
@@ -216,10 +342,6 @@ class FrontController extends Controller
                         [
                             'q' => 'Pouvez-vous livrer une vidéo le jour même de l\'événement ?',
                             'a' => 'Oui. Grâce à notre régie de montage nomade sur site, nous produisons des teasers "Same-Day" en quelques heures pour alimenter vos réseaux sociaux en temps réel.'
-                        ],
-                        [
-                            'q' => 'Comment est dimensionnée l\'équipe technique sur un événement ?',
-                            'a' => 'Selon l\'envergure du projet, nos équipes événementielles sont calibrées sur-mesure (cadreurs, télépilote, ingénieur son, réalisation régie et monteur sur site).'
                         ]
                     ]
                 ],
@@ -243,10 +365,6 @@ class FrontController extends Controller
                         [
                             'q' => 'Les vols par drone sont-ils conformes à la réglementation au Maroc ?',
                             'a' => 'Oui. Nos vols sont encadrés par des télépilotes qualifiés avec l\'ensemble des autorisations administratives et protocoles de sécurité requis pour chaque mission.'
-                        ],
-                        [
-                            'q' => 'Quelle est la différence entre un drone classique et un drone FPV ?',
-                            'a' => 'Le drone classique offre des plans larges et stables à haute altitude. Le drone FPV (First Person View) permet des trajectoires dynamiques, des passages étroits en intérieur et des sensations de vitesse uniques.'
                         ]
                     ]
                 ]
