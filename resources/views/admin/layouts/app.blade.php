@@ -37,6 +37,10 @@
                 <i class="fas fa-video w-6 text-indigo-400"></i> Portfolio & Films
             </a>
             
+            <a href="{{ route('admin.expertises.index') }}" class="flex items-center px-6 py-3 {{ request()->routeIs('admin.expertises.*') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:bg-gray-800 hover:text-white transition-colors' }}">
+                <i class="fas fa-layer-group w-6 text-rose-400"></i> Nos Expertises (Photos)
+            </a>
+            
             <a href="{{ route('pages.index') }}" class="flex items-center px-6 py-3 {{ request()->routeIs('pages.*') ? 'bg-blue-600 text-white shadow-md' : 'text-gray-400 hover:bg-gray-800 hover:text-white transition-colors' }}">
                 <i class="fas fa-file-alt w-6"></i> Pages & Builder
             </a>

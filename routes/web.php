@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\Admin\ExpertiseController as AdminExpertiseController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\InquiryController;
 use App\Http\Controllers\SitemapController;
@@ -56,6 +57,9 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     // Projets & Portfolio (Case Studies)
     Route::resource('projects', AdminProjectController::class, ['as' => 'admin']);
+
+    // Expertises & Photos Management
+    Route::resource('expertises', AdminExpertiseController::class, ['as' => 'admin'])->only(['index', 'edit', 'update']);
 
     // Leads & Demandes de Devis (CRM)
     Route::get('leads', [LeadController::class, 'index'])->name('admin.leads.index');

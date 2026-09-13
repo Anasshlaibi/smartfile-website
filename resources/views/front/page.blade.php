@@ -11,10 +11,7 @@
     {{-- CHAPTER 02: TRUST & MONOCHROME CLIENT MARQUEE (#F7F6F3) --}}
     @include('sections.clients')
 
-    {{-- CHAPTER 03: SELECTED CINEMATIC FILMS GRID (#080914) --}}
-    @include('sections.projects')
-
-    {{-- CHAPTER 04: CORE DISCIPLINES & EXPERTISE (#F7F6F3) --}}
+    {{-- CHAPTER 03: CORE DISCIPLINES & EXPERTISE (#F7F6F3) --}}
     @include('sections.expertise')
 
     {{-- CHAPTER 05: MANIFESTO & CREATIVE PROCESS (#101229) --}}
