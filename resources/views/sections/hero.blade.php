@@ -15,11 +15,7 @@
             <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/30 pointer-events-none"></div>
         </div>
 
-        <!-- Live Audio Toggle Control (Top Right of Hero Panel) -->
-        <button onclick="toggleHeroAudio()" id="audioToggleBtn" class="absolute top-6 right-6 sm:top-8 sm:right-8 z-20 bg-black/40 backdrop-blur-md border border-white/20 text-white/90 hover:text-white px-4 py-2 rounded-full text-xs font-medium tracking-wider flex items-center gap-2.5 transition-all duration-300 hover:border-[#FF5A68] shadow-lg hover:scale-105">
-            <i id="audioIcon" class="bi bi-volume-mute-fill text-base text-[#FF5A68]"></i>
-            <span id="audioText" class="uppercase text-[10px] tracking-widest font-bold font-mono">Activer le son</span>
-        </button>
+
 
         <!-- Editorial Hero Typography & Composition (Left Dominant, Right Open for Video) -->
         <div class="relative z-10 w-full px-6 sm:px-10 lg:px-14 py-16 sm:py-20 flex flex-col justify-center">
@@ -78,22 +74,4 @@
     </div>
 </section>
 
-@push('scripts')
-<script>
-    function toggleHeroAudio() {
-        const video = document.getElementById('heroVideoEl');
-        const icon = document.getElementById('audioIcon');
-        const text = document.getElementById('audioText');
-        if (video) {
-            video.muted = !video.muted;
-            if (!video.muted) {
-                icon.className = 'bi bi-volume-up-fill text-base text-[#FF5A68]';
-                text.innerText = 'Couper le son';
-            } else {
-                icon.className = 'bi bi-volume-mute-fill text-base text-[#FF5A68]';
-                text.innerText = 'Activer le son';
-            }
-        }
-    }
-</script>
-@endpush
+
