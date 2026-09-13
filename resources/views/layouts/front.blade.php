@@ -324,6 +324,25 @@
             border-bottom: none !important;
         }
 
+        /* Smooth Continuous Moving Logo Marquee */
+        @keyframes smoothClientMarquee {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(-50%, 0, 0);
+            }
+        }
+        .client-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: smoothClientMarquee 32s linear infinite;
+            will-change: transform;
+        }
+        .client-marquee-track:hover {
+            animation-play-state: paused;
+        }
+
         /* Editorial Card Utilities */
         .editorial-card {
             background-color: #ffffff;

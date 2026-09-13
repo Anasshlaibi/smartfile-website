@@ -282,14 +282,27 @@
     height: 66px !important;
 }
 
-#mainHeader.is-scrolled #topInfoStrip,
-#mainHeader.scrolled #topInfoStrip {
-    max-height: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    opacity: 0 !important;
-    overflow: hidden !important;
-    border-bottom: none !important;
+/* ========================================================
+   SMOOTH CONTINUOUS MOVING LOGO MARQUEE
+   ======================================================== */
+@keyframes smoothClientMarquee {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+.client-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: smoothClientMarquee 32s linear infinite;
+    will-change: transform;
+}
+
+.client-marquee-track:hover {
+    animation-play-state: paused;
 }
 
 /* ========================================================
@@ -318,29 +331,4 @@
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
-}
-
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-    *, ::before, ::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-
-    .hero-eyebrow,
-    .hero-serif,
-    .hero-title-line1,
-    .hero-title-line2,
-    .hero-desc,
-    .hero-cta,
-    .reveal-line,
-    .reveal-fade-up,
-    .reveal-left,
-    .reveal-right,
-    .reveal-scale-up {
-        transform: none !important;
-        opacity: 1 !important;
-    }
 }
